@@ -11,3 +11,8 @@ curl -su admin:admin http://nightly514-1.gce.cloudera.com:7180/api/v19/clusters/
 
 
 http://cloudera.github.io/cm_api/apidocs/v19/path__clusters_-clusterName-_services_-serviceName-_replications_-scheduleId-_run.html
+
+---
+## Scripts
+
+1. CM dump config 
