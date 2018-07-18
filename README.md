@@ -15,4 +15,4 @@ http://cloudera.github.io/cm_api/apidocs/v19/path__clusters_-clusterName-_servic
 ---
 ## Scripts
 
-1. CM dump config 
+1. CM dump config [example](scripts/cm-dump-config.md)
