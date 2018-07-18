@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import os,ssl
 from cm_api.api_client import ApiResource
 
 def get_cm_api():
@@ -7,6 +7,9 @@ def get_cm_api():
     port = 7183
     username = "admin"
     password = "admin"
+    if (not os.environ.get('PYTHONHTTPSVERIFY', '') and
+        getattr(ssl, '_create_unverified_context', None)):
+        ssl._create_default_https_context = ssl._create_unverified_context
     return ApiResource(server_host=host, server_port=7183, username=username, password=password, use_tls=True, version=13)
 
 def find_cluster(api, cluster_name):
