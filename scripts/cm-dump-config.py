@@ -3,7 +3,7 @@
 from cm_api.api_client import ApiResource
 
 def get_cm_api():
-    host = "host-cm.acme.com"
+    host = "18.205.96.96"
     port = 7183
     username = "admin"
     password = "admin"
