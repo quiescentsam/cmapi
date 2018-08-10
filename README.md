@@ -13,9 +13,16 @@ curl -su admin:admin http://nightly514-1.gce.cloudera.com:7180/api/v19/clusters/
 http://cloudera.github.io/cm_api/apidocs/v19/path__clusters_-clusterName-_services_-serviceName-_replications_-scheduleId-_run.html
 
 
+## to get cloudera manager config from the clusters
+```
+wget --user --password admin -O cminfo.json http://host:7180/api/v19/cm/deployment?view=export_redacted --no-check-certificate
+```
 
-wget --user --password admin -O cminfo.json http://host:7180/api/v19/cm/deployment?view=export_redacted
---no-check-certificate
+## to get the CDH config from the clusters
+```
+wget --user --password admin -O cluster_info.json http://nightly514-1.gce.cloudera.com:7180/api/v19/clusters/Cluster%201/export --no-check-certificate
+```
+
 
 3.Update scmdb.json
 
