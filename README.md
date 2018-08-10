@@ -12,6 +12,17 @@ curl -su admin:admin http://nightly514-1.gce.cloudera.com:7180/api/v19/clusters/
 
 http://cloudera.github.io/cm_api/apidocs/v19/path__clusters_-clusterName-_services_-serviceName-_replications_-scheduleId-_run.html
 
+
+
+wget --user --password admin -O cminfo.json http://host:7180/api/v19/cm/deployment?view=export_redacted
+--no-check-certificate
+
+3.Update scmdb.json
+
+wget --user --password admin -O cmdb.json http://host:7180/api/v19/cm/scmDbInfo?view=export_redacted
+--no-check-certificate
+
+
 ---
 ## Scripts
 
