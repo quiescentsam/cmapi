@@ -64,19 +64,19 @@ def main():
     @rtype:   number
     @returns: A number representing the status of success.
     """
-    settings = retrieve_args()
+    #settings = retrieve_args()
 
     #api = ApiResource(settings.host, settings.port, settings.username,
     #                  settings.password, settings.use_tls, 8)
 
     #cluster = api.get_cluster(settings.cluster)
 
-    TARGET_CM_HOST = ""
-    SOURCE_CM_URL = "<source_cluster>:7180/"
+    TARGET_CM_HOST = "18.205.59.216"
+    SOURCE_CM_URL = "http://34.226.244.149:7180/"
 
-    api_root = ApiResource(TARGET_CM_HOST, username="<username>", password="<password>")
+    api_root = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
     cm = api_root.get_cloudera_manager()
-    cm.create_peer("peer1", SOURCE_CM_URL, '<username>', '<password>')
+    cm.create_peer("peer1", SOURCE_CM_URL, 'admin', 'admin')
 
 
     return 0
