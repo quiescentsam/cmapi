@@ -60,16 +60,12 @@ def parse_args():
 
 def main():
     """
-    Configures a cluster.
+    Add peer to the cluster.
     @rtype:   number
     @returns: A number representing the status of success.
     """
-    #settings = retrieve_args()
+    settings = retrieve_args()
 
-    #api = ApiResource(settings.host, settings.port, settings.username,
-    #                  settings.password, settings.use_tls, 8)
-
-    #cluster = api.get_cluster(settings.cluster)
 
     TARGET_CM_HOST = "18.205.59.216"
     SOURCE_CM_URL = "http://34.226.244.149:7180/"
