@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+
+from cm_api.api_client import ApiResource
+from cm_api.endpoints.types import *
+
+
+
 PEER_NAME='peer1'
 SOURCE_CLUSTER_NAME='Cluster-src-1'
 SOURCE_HDFS_NAME='HDFS-src-1'
