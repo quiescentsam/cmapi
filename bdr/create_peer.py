@@ -2,6 +2,10 @@
 
 from cm_api.api_client import ApiResource
 from cm_api.endpoints.types import *
+import argparse
+import os
+import sys
+from collections import namedtuple
 
 
 def retrieve_args():
@@ -53,10 +57,31 @@ def parse_args():
 
 
 
+def main():
+    """
+    Configures a cluster.
+    @rtype:   number
+    @returns: A number representing the status of success.
+    """
+    settings = retrieve_args()
 
-TARGET_CM_HOST = "<destination_cluster>"
-SOURCE_CM_URL = "<source_cluster>:7180/"
+    #api = ApiResource(settings.host, settings.port, settings.username,
+    #                  settings.password, settings.use_tls, 8)
 
-api_root = ApiResource(TARGET_CM_HOST, username="<username>", password="<password>")
-cm = api_root.get_cloudera_manager()
-cm.create_peer("peer1", SOURCE_CM_URL, '<username>', '<password>')
+    #cluster = api.get_cluster(settings.cluster)
+
+    TARGET_CM_HOST = "<destination_cluster>"
+    SOURCE_CM_URL = "<source_cluster>:7180/"
+
+    api_root = ApiResource(TARGET_CM_HOST, username="<username>", password="<password>")
+    cm = api_root.get_cloudera_manager()
+    cm.create_peer("peer1", SOURCE_CM_URL, '<username>', '<password>')
+
+
+    return 0
+
+if __name__ == '__main__':
+    sys.exit(main())
+
+
+
