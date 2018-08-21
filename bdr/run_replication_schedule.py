@@ -18,8 +18,8 @@ hdfs = api_root.get_cluster(TARGET_CLUSTER_NAME).get_service(TARGET_HDFS_NAME)
 
 
 
-schs = hdfs.get_replication_schedules()
-print schs
-# cmd = hdfs.trigger_replication_schedule(schedule.id)
-# cmd = cmd.wait()
-# result = hdfs.get_replication_schedule(schedule.id).history[0].hdfsResult
+# schs = hdfs.get_replication_schedules()
+# print schs
+cmd = hdfs.trigger_replication_schedule('4')
+cmd = cmd.wait()
+result = hdfs.get_replication_schedule('4').history[0].hdfsResult
