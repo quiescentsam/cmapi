@@ -6,9 +6,9 @@ from cm_api.endpoints.types import *
 
 PEER_NAME='peer1'
 SOURCE_CLUSTER_NAME='sameer-testspot'
-SOURCE_HDFS_NAME='HDFS-src-1'
+SOURCE_HDFS_NAME='HDFS-1'
 TARGET_CLUSTER_NAME='sameer-testspot-dest'
-TARGET_HDFS_NAME='HDFS-tgt-1'
+TARGET_HDFS_NAME='HDFS-1'
 TARGET_YARN_SERVICE='YARN-1'
 TARGET_CM_HOST="18.205.59.216"
 
