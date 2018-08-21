@@ -4,7 +4,6 @@ from cm_api.api_client import ApiResource
 from cm_api.endpoints.types import *
 
 
-
 PEER_NAME='peer1'
 SOURCE_CLUSTER_NAME='Cluster-src-1'
 SOURCE_HDFS_NAME='HDFS-src-1'
@@ -19,8 +18,8 @@ hdfs_args.sourceService = ApiServiceRef(None,
                                         peerName=PEER_NAME,
                                         clusterName=SOURCE_CLUSTER_NAME,
                                         serviceName=SOURCE_HDFS_NAME)
-hdfs_args.sourcePath = '/src/path/'
-hdfs_args.destinationPath = '/target/path'
+hdfs_args.sourcePath = '/'
+hdfs_args.destinationPath = '/'
 hdfs_args.mapreduceServiceName = TARGET_YARN_SERVICE
 
 # creating a schedule with daily frequency
