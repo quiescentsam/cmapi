@@ -64,7 +64,7 @@ def main():
     @rtype:   number
     @returns: A number representing the status of success.
     """
-    settings = retrieve_args()
+    #settings = retrieve_args()
 
 
     TARGET_CM_HOST = "18.205.59.216"

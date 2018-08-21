@@ -5,12 +5,14 @@ from cm_api.endpoints.types import *
 
 
 PEER_NAME='peer1'
-SOURCE_CLUSTER_NAME='Cluster-src-1'
+SOURCE_CLUSTER_NAME='sameer-testspot'
 SOURCE_HDFS_NAME='HDFS-src-1'
-TARGET_CLUSTER_NAME='Cluster-tgt-1'
+TARGET_CLUSTER_NAME='sameer-testspot-dest'
 TARGET_HDFS_NAME='HDFS-tgt-1'
 TARGET_YARN_SERVICE='YARN-1'
+TARGET_CM_HOST="18.205.59.216"
 
+api_root = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
 hdfs = api_root.get_cluster(TARGET_CLUSTER_NAME).get_service(TARGET_HDFS_NAME)
 
 hdfs_args = ApiHdfsReplicationArguments(None)
