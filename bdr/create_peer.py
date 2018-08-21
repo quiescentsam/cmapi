@@ -33,7 +33,7 @@ def retrieve_args():
         return args
     else:
         return parse_args()
-    
+
 
 def parse_args():
     """
@@ -71,7 +71,7 @@ def main():
 
     #cluster = api.get_cluster(settings.cluster)
 
-    TARGET_CM_HOST = "<destination_cluster>"
+    TARGET_CM_HOST = ""
     SOURCE_CM_URL = "<source_cluster>:7180/"
 
     api_root = ApiResource(TARGET_CM_HOST, username="<username>", password="<password>")
