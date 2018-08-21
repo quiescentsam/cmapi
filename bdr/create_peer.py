@@ -19,7 +19,7 @@ def retrieve_args():
     if all(env_var in os.environ for env_var in ("DEPLOYMENT_HOST_PORT",
                                                  "CM_USERNAME", "CM_PASSWORD",
                                                  "CLUSTER_NAME")):
-        write_to_stdout("Arguments detected in environment -- command line arguments being ignored.\n")
+        sys.stdout.write("Arguments detected in environment -- command line arguments being ignored.\n")
         args = namedtuple("args", ["host", "port", "username", "password", "cluster", "use_tls"])
 
         parsed_url = os.environ["DEPLOYMENT_HOST_PORT"].split(":")
@@ -33,6 +33,7 @@ def retrieve_args():
         return args
     else:
         return parse_args()
+    
 
 def parse_args():
     """
