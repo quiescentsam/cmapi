@@ -13,7 +13,7 @@ def parse_args():
     """
     parser = argparse.ArgumentParser(description="Adding Source cluster as 'peer' in Destination Cloudera Manager ",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('-s', '--server', metavar='HOST', type=str, help="The Cloudera Manager host")
+    parser.add_argument('-s', '--host', metavar='HOST', type=str, help="The Cloudera Manager host")
     parser.add_argument('-p', '--port', metavar='port', type=int, default=7180, help="Cloudera Manager's port.")
     parser.add_argument('-u', '--username', metavar='USERNAME', type=str, default='admin',
                         help="The username to log into Cloudera Manager with.")
@@ -64,8 +64,8 @@ def main():
         print_usage_message()
         quit(1)
 
-    api = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
-    TARGET_HDFS_NAME =get_service_name('HDFS',api, settings.target_cluster_name)
+    api = ApiResource(settings.host, settings.port, settings.username,settings.password, settings.use_tls, 14)
+    TARGET_HDFS_NAME = get_service_name('HDFS',api, settings.target_cluster_name)
     hdfs = api.get_cluster(settings.target_cluster_name).get_service(TARGET_HDFS_NAME)
     # schs = hdfs.get_replication_schedules()
     # print schs
