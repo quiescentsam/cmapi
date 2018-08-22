@@ -18,7 +18,7 @@ TARGET_CLUSTER_NAME='sameer-testspot-dest'
 api_target = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
 cluster = api_target.get_cluster(TARGET_CLUSTER_NAME)
 services = cluster.get_all_services()
-print services
+print services[1]
 print type(services)
 
 # PEER_NAME='peer1'
