@@ -38,7 +38,7 @@ optional arguments:
 
 ```
 
-
+## Create a Schedule
 
 ```
 (python27) ssiddiqui-MBP15:bdr ssiddiqui$ python run_replication_schedule.py -s 18.205.59.216 -id 15 --target-cluster-name sameer-testspot-dest
@@ -51,7 +51,7 @@ numFilesSkipped:8
 numBytesSkipped:1430044
 ```
 
-
+## Run replication
 
 
 
