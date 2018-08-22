@@ -17,7 +17,8 @@ api_root = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
 hdfs = api_root.get_cluster(TARGET_CLUSTER_NAME).get_service(TARGET_HDFS_NAME)
 
 
-import site; site.getsitepackages()
+import site;
+site.getsitepackages()
 # schs = hdfs.get_replication_schedules()
 # print schs
 # cmd = hdfs.trigger_replication_schedule(6)
