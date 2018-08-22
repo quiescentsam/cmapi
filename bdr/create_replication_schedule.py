@@ -18,10 +18,9 @@ TARGET_CLUSTER_NAME='sameer-testspot-dest'
 api_target = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
 cluster = api_target.get_cluster(TARGET_CLUSTER_NAME)
 services = cluster.get_all_services()
-print services[2].name
-for a in services:
-    print a.name
-print type(services)
+for service_name in services:
+    if "HDFS" in service_name.name:
+        print service_name.name
 
 # PEER_NAME='peer1'
 # SOURCE_CLUSTER_NAME='sameer-testspot'
