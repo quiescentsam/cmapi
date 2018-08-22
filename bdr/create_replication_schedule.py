@@ -3,24 +3,26 @@
 from cm_api.api_client import ApiResource
 from cm_api.endpoints.types import *
 
-# def get_service_name():
-#     """
-#     Take the cluster APiResource and get SERVICE name
-#     :return:
-#     """
-#     api_target = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
-#     cluster = api_target.get_cluster(TARGET_CLUSTER_NAME)
-#     services = cluster.get_services()
-#     print services
+def get_service_name():
+    """
+    Take the cluster APiResource and get SERVICE name
+    :return:
+    """
+    TARGET_CM_HOST="18.205.59.216"
+    TARGET_CLUSTER_NAME='sameer-testspot-dest'
+    api_target = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
+    cluster = api_target.get_cluster(TARGET_CLUSTER_NAME)
+    services = cluster.get_all_services()
+    for service_name in services:
+        if "HDFS" in service_name.name:
+            return service_name.name
 
-TARGET_CM_HOST="18.205.59.216"
-TARGET_CLUSTER_NAME='sameer-testspot-dest'
-api_target = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
-cluster = api_target.get_cluster(TARGET_CLUSTER_NAME)
-services = cluster.get_all_services()
-for service_name in services:
-    if "HDFS" in service_name.name:
-        print service_name.name
+
+TARGET_HDFS_NAME = get_service_name()
+print TARGET_HDFS_NAME
+
+
+
 
 # PEER_NAME='peer1'
 # SOURCE_CLUSTER_NAME='sameer-testspot'
