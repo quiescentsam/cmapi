@@ -9,7 +9,8 @@ def get_service_name():
     :return:
     """
     api_target = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
-    services = api_target.get_all
+    cluster = api_target.get_cluster(TARGET_CLUSTER_NAME)
+    service = cluster.
 
 
 
