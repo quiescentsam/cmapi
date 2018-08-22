@@ -56,30 +56,6 @@ def get_service_name(SERVICE_TYPE, cluster_api, CLUSTER_NAME):
 
 
 
-# PEER_NAME='peer1'
-# SOURCE_CLUSTER_NAME='sameer-testspot'
-# SOURCE_HDFS_NAME='CD-HDFS-VHPVExTo'
-# TARGET_CLUSTER_NAME='sameer-testspot-dest'
-# TARGET_HDFS_NAME='CD-HDFS-KukHKtDK'
-# TARGET_YARN_SERVICE='CD-YARN-rnMjblqZ'
-# TARGET_CM_HOST="18.205.59.216"
-# SOURCE_CM_HOST="34.226.244.149"
-# TARGET_CM_HOST="18.205.59.216"
-# TARGET_CLUSTER_NAME='sameer-testspot-dest'
-# SOURCE_CLUSTER_NAME='sameer-testspot'
-# api_target = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
-# api_source = ApiResource(SOURCE_CM_HOST, username="admin", password="admin")
-
-# TARGET_HDFS_NAME = get_service_name('HDFS',api_target,TARGET_CLUSTER_NAME)
-# SOURCE_HDFS_NAME = get_service_name('HDFS',api_source, SOURCE_CLUSTER_NAME)
-# TARGET_YARN_SERVICE = get_service_name('YARN', api_target,TARGET_CLUSTER_NAME)
-
-# print TARGET_HDFS_NAME
-# print TARGET_YARN_SERVICE
-# print SOURCE_HDFS_NAME
-
-
-
 def main():
     """
     Add peer to the cluster.
