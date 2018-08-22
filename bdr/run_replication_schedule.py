@@ -4,7 +4,7 @@
 ## *******************************************************************************************
 ##  run_replication_schedule.py
 ##
-##  Kills Long Running Impala Queries
+##  Executes the Replication Schedule
 ##
 ##  Usage: ./killLongRunningImpalaQueries.py  queryRunningSeconds [KILL]
 ##
@@ -83,8 +83,6 @@ def main():
     api = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
     TARGET_HDFS_NAME = get_service_name('HDFS',api, settings.target_cluster_name)
     hdfs = api.get_cluster(settings.target_cluster_name).get_service(TARGET_HDFS_NAME)
-    # schs = hdfs.get_replication_schedules()
-    # print schs
     cmd = hdfs.trigger_replication_schedule(settings.schedule_id)
     cmd.wait()
     result = hdfs.get_replication_schedule(settings.schedule_id).history[0].hdfsResult
@@ -92,14 +90,14 @@ def main():
         print "######  Replication job failed  #####"
         print "Yarn Job ID :" + result.jobId
         print "Job Details URL:" + result.jobDetailsUri
+        print "Setup Error:" + result.setupError
     else:
-        print("#### Replication Job Succeeded ")
+        print "#### Replication Job Succeeded "
         print "Yarn Job ID :" + result.jobId
-        numFilesCopied
-        numBytesCopied
-        numFilesSkipped
-        numBytesSkipped
-
+        print "numFilesCopied:" + result.numFilesCopied
+        print "numBytesCopied:" + result.numBytesCopied
+        print "numFilesSkipped:" + result.numFilesSkipped
+        print "numBytesSkipped:" + result.numBytesSkipped
 
 
     return 0
