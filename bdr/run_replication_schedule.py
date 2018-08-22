@@ -88,9 +88,11 @@ def main():
     cmd = hdfs.trigger_replication_schedule(settings.schedule_id)
     cmd.wait()
     result = hdfs.get_replication_schedule(settings.schedule_id).history[0].hdfsResult
+    if result.numBytesCopyFailed != 0 :
+        
     print result.jobId
     print result.jobDetailsUri
-    print result.
+    print result.numBytesCopyFailed
 
     return 0
 
