@@ -6,7 +6,7 @@ from cm_api.endpoints.types import *
 def get_service_name(SERVICE_TYPE, cluster_api, CLUSTER_NAME):
     """
     Inputs: Common name of the Service,cluster APiResource and cluster name
-    :return: Service name
+    :return: Service name , returns "None" if service is not present
     """
     cluster = cluster_api.get_cluster(CLUSTER_NAME)
     services = cluster.get_all_services()
