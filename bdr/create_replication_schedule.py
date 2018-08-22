@@ -94,6 +94,8 @@ def main():
     end = start + datetime.timedelta(days=365) # The time after which the scheduled activity will no longer be triggered.
 
     schedule = hdfs.create_replication_schedule(start, end, "DAY", 1, True, hdfs_args)
+    
+    print schedule.id
     print schedule.alertOnFail
     print type(schedule)
 
