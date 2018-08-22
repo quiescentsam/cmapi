@@ -2,7 +2,7 @@
 
 from cm_api.api_client import ApiResource
 from cm_api.endpoints.types import *
-
+import types.py
 
 PEER_NAME='peer1'
 SOURCE_CLUSTER_NAME='sameer-testspot'
@@ -21,5 +21,5 @@ schs = hdfs.get_replication_schedules()
 print schs
 # cmd = hdfs.trigger_replication_schedule(6)
 # cmd = cmd.wait()
-#result = hdfs.get_replication_schedule(6).history[0].hdfsResult
-# result = hdfs.get_replication_schedules()
+result = hdfs.get_replication_schedule(6).history[0].hdfsResult
+result = hdfs.get_replication_schedules()
