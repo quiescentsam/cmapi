@@ -89,10 +89,18 @@ def main():
     cmd.wait()
     result = hdfs.get_replication_schedule(settings.schedule_id).history[0].hdfsResult
     if result.numBytesCopyFailed != 0 :
-        
-    print result.jobId
-    print result.jobDetailsUri
-    print result.numBytesCopyFailed
+        print "######  Replication job failed  #####"
+        print "Yarn Job ID :" + result.jobId
+        print "Job Details URL:" + result.jobDetailsUri
+    else:
+        print("#### Replication Job Succeeded ")
+        print "Yarn Job ID :" + result.jobId
+        numFilesCopied
+        numBytesCopied
+        numFilesSkipped
+        numBytesSkipped
+
+
 
     return 0
 
