@@ -83,30 +83,23 @@ def main():
     api = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
     TARGET_HDFS_NAME = get_service_name('HDFS',api, settings.target_cluster_name)
     hdfs = api.get_cluster(settings.target_cluster_name).get_service(TARGET_HDFS_NAME)
-    # cmd = hdfs.trigger_replication_schedule(settings.schedule_id)
-    # cmd.wait()
+    cmd = hdfs.trigger_replication_schedule(settings.schedule_id)
+    cmd.wait()
     result = hdfs.get_replication_schedule(settings.schedule_id).history[0]
+    hdfsresult = hdfs.get_replication_schedule(settings.schedule_id).history[0].hdfsResult
     if result.success == False:
-        hdfsresult = hdfs.get_replication_schedule(settings.schedule_id).history[0].hdfsResult
         print "######  Replication job failed  #####"
         print "Yarn Job ID :" + str(hdfsresult.jobId)
         print "Job Details URL:" + str(hdfsresult.jobDetailsUri)
         print "Setup Error:" + str(hdfsresult.setupError)
-    print type(result)
-    # result = hdfs.get_replication_schedule(settings.schedule_id).history[0].hdfsResult
-    # if result.numBytesCopyFailed != 0 :
-    #     print "######  Replication job failed  #####"
-    #     print "Yarn Job ID :" + str(result.jobId)
-    #     print "Job Details URL:" + str(result.jobDetailsUri)
-    #     print "Setup Error:" + str(result.setupError)
-    # else:
-    #     print "#### Replication Job Succeeded ####"
-    #     print result.numBytesCopyFailed
-    #     print "Yarn Job ID :" + str(result.jobId)
-    #     print "numFilesCopied:" + str(result.numFilesCopied)
-    #     print "numBytesCopied:" + str(result.numBytesCopied)
-    #     print "numFilesSkipped:" + str(result.numFilesSkipped)
-    #     print "numBytesSkipped:" + str(result.numBytesSkipped)
+    else:
+        print "######  Replication job succeeded  #####"
+        print "Yarn Job ID :" + str(hdfsresult.jobId)
+        print "Job Details URL:" + str(hdfsresult.jobDetailsUri)
+        print "numFilesCopied:" + str(result.numFilesCopied)
+        print "numBytesCopied:" + str(result.numBytesCopied)
+        print "numFilesSkipped:" + str(result.numFilesSkipped)
+        print "numBytesSkipped:" + str(result.numBytesSkipped)
 
 
     return 0
