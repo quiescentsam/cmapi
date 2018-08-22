@@ -3,15 +3,15 @@
 from cm_api.api_client import ApiResource
 from cm_api.endpoints.types import *
 
-def get_service_name():
+def get_service_name(SERVICE_TYPE, cluster_api):
     """
     Take the cluster APiResource and get SERVICE name
     :return:
     """
-    cluster = api_target.get_cluster(TARGET_CLUSTER_NAME)
+    cluster = cluster_api.get_cluster(TARGET_CLUSTER_NAME)
     services = cluster.get_all_services()
     for service_name in services:
-        if "HDFS" in service_name.name:
+        if SERVICE_TYPE in service_name.name:
             return service_name.name
 
 
@@ -20,7 +20,7 @@ TARGET_CM_HOST="18.205.59.216"
 TARGET_CLUSTER_NAME='sameer-testspot-dest'
 api_target = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
 
-TARGET_HDFS_NAME = get_service_name()
+TARGET_HDFS_NAME = get_service_name('HDFS',api_target)
 print TARGET_HDFS_NAME
 
 
