@@ -2,7 +2,7 @@
 
 from cm_api.api_client import ApiResource
 from cm_api.endpoints.types import *
-# import types.py
+from ReplicationResult import *
 
 PEER_NAME='peer1'
 SOURCE_CLUSTER_NAME='sameer-testspot'
