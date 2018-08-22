@@ -94,7 +94,10 @@ def main():
     end = start + datetime.timedelta(days=365) # The time after which the scheduled activity will no longer be triggered.
 
     schedule = hdfs.create_replication_schedule(start, end, "DAY", 1, True, hdfs_args)
+
+    ## Updating the Schedule's properties
     schedule.hdfsArguments.removeMissingFiles = True
+    schedule.alertOnFail = True
     schedule = hdfs.update_replication_schedule(schedule.id, schedule)
 
     print schedule.id
