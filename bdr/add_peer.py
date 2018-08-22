@@ -64,8 +64,8 @@ def parse_args():
 def printusagemessage():
     print ("Usage: killLongRunningImpalaQueries.py <queryRunningSeconds>  [KILL]")
     print ("Example that lists queries that have run more than 10 minutes:")
-    print ("python create_peer.py --host 18.205.59.216 --port 7180 --username admin --password admin --source_cm_url http://34.226.244.149:7180/ --source-user admin --source-password admin --peer-name peer2
-           ")
+    print ("python create_peer.py --host 18.205.59.216 --port 7180 --username admin --password admin "
+           "--source_cm_url http://34.226.244.149:7180/ --source-user admin --source-password admin --peer-name peer2")
     print ("Example that kills queries that have run more than 10 minutes:")
     print ("./killLongRunningImpalaQueries.py 600 KILL")
 
