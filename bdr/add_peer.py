@@ -2,6 +2,7 @@
 
 from cm_api.api_client import ApiResource
 from cm_api.endpoints.types import *
+from cm_api.api_client import ApiException
 import argparse
 import os
 import sys
@@ -89,8 +90,14 @@ def main():
     print "came here 2"
     # api_root = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
     cm = api_target.get_cloudera_manager()
+    try:
+        cm.create_peer(settings.peer_name, settings.source_cm_url, settings.source_user, settings.source_password)
+    except ApiException as e:
+        if 'already exists' in str(e):
+            print 'Peer Already exists'
+        else:
+            raise e
 
-    cm.create_peer(settings.peer_name, settings.source_cm_url, settings.source_user, settings.source_password)
 
     return 0
 
