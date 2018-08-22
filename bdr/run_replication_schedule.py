@@ -65,20 +65,14 @@ def main():
         quit(1)
 
     api = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
+    TARGET_HDFS_NAME =get_service_name('HDFS',api, settings.target_cluster_name)
     hdfs = api.get_cluster(settings.target_cluster_name).get_service(TARGET_HDFS_NAME)
-    schs = hdfs.get_replication_schedules()
-    print schs
-    # cmd = hdfs.trigger_replication_schedule(6)
-    # cmd = cmd.wait()
-    #      result = hdfs.get_replication_schedule(6).history[0].hdfsResult
+    # schs = hdfs.get_replication_schedules()
+    # print schs
+    cmd = hdfs.trigger_replication_schedule(settings.schedule_id)
+    cmd = cmd.wait()
+    result = hdfs.get_replication_schedule(settings.schedule_id).history[0].hdfsResult
     print result
-    # result = hdfs.get_replication_schedules()
-
-
-
-
-
-
 
     return 0
 
