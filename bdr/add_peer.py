@@ -9,33 +9,6 @@ import sys
 from collections import namedtuple
 
 
-def retrieve_args():
-    """
-    Attempts to retrieve Cloudera Manager connection information from the environment.
-    If that fails, the information is parsed from the command line.
-    @rtype:  namespace
-    @return: The parsed arguments.
-    """
-
-    if all(env_var in os.environ for env_var in ("DEPLOYMENT_HOST_PORT",
-                                                 "CM_USERNAME", "CM_PASSWORD",
-                                                 "CLUSTER_NAME")):
-        sys.stdout.write("Arguments detected in environment -- command line arguments being ignored.\n")
-        args = namedtuple("args", ["host", "port", "username", "password", "cluster", "use_tls"])
-
-        parsed_url = os.environ["DEPLOYMENT_HOST_PORT"].split(":")
-        args.host = parsed_url[0]
-        args.port = int(parsed_url[1])
-        args.username = os.environ["CM_USERNAME"]
-        args.password = os.environ["CM_PASSWORD"]
-        args.cluster = os.environ["CLUSTER_NAME"]
-        args.use_tls = False
-
-        return args
-    else:
-        return parse_args()
-
-
 def parse_args():
     """
     Parses host and cluster information from the given command line arguments.
@@ -88,7 +61,6 @@ def main():
     print "came here 1"
     api_target = ApiResource(settings.host, settings.port, settings.username,settings.password, settings.use_tls, 14)
     print "came here 2"
-    # api_root = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
     cm = api_target.get_cloudera_manager()
     try:
         cm.create_peer(settings.peer_name, settings.source_cm_url, settings.source_user, settings.source_password)
