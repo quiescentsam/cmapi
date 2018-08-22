@@ -44,16 +44,6 @@ def get_service_name(SERVICE_TYPE, cluster_api, CLUSTER_NAME):
             return service_name.name
 
 
-# PEER_NAME='peer1'
-# SOURCE_CLUSTER_NAME='sameer-testspot'
-# SOURCE_HDFS_NAME='CD-HDFS-VHPVExTo'
-# TARGET_CLUSTER_NAME='sameer-testspot-dest'
-# TARGET_HDFS_NAME='CD-HDFS-KukHKtDK'
-# TARGET_YARN_SERVICE='YARN-1CD-YARN-rnMjblqZ'
-# TARGET_CM_HOST="18.205.59.216"
-
-
-
 def main():
     """
     Add peer to the cluster.
