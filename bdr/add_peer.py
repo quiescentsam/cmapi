@@ -76,17 +76,14 @@ def main():
     @rtype:   number
     @returns: A number representing the status of success.
     """
-    settings = retrieve_args()
-    if len(sys.argv) == 1 or len(sys.argv) > 8:
-        printusagemessage()
-    quit(1)
+    settings = parse_args()
+    # if len(sys.argv) == 1 or len(sys.argv) > 8:
+    #     printusagemessage()
+    # quit(1)
 
     # TARGET_CM_HOST = "18.205.59.216"
     # SOURCE_CM_URL = "http://34.226.244.149:7180/"
-
-
-    api_target = ApiResource(settings.host, settings.port, settings.username,
-                      settings.password, settings.use_tls, 14)
+    api_target = ApiResource(settings.host, settings.port, settings.username,settings.password, settings.use_tls, 14)
 
     # api_root = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
     cm = api_target.get_cloudera_manager()
