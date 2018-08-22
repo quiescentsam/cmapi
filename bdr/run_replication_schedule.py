@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from cm_api.api_client import ApiResource
-# from cm_api.endpoints.types import *
+from cm_api.endpoints.types import *
 # import types.py
 
 PEER_NAME='peer1'
