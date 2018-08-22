@@ -77,9 +77,10 @@ def main():
     @returns: A number representing the status of success.
     """
     settings = parse_args()
-    # if len(sys.argv) == 1 or len(sys.argv) > 8:
-    #     printusagemessage()
-    # quit(1)
+    # print len(sys.argv)
+    if len(sys.argv) == 1 or len(sys.argv) > 17:
+        printusagemessage()
+    quit(1)
 
     # TARGET_CM_HOST = "18.205.59.216"
     # SOURCE_CM_URL = "http://34.226.244.149:7180/"
