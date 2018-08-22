@@ -17,7 +17,7 @@ TARGET_CM_HOST="18.205.59.216"
 TARGET_CLUSTER_NAME='sameer-testspot-dest'
 api_target = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
 cluster = api_target.get_cluster(TARGET_CLUSTER_NAME)
-services = cluster.get_services()
+services = cluster.get_all_services()
 print services
 
 
