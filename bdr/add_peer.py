@@ -4,9 +4,7 @@ from cm_api.api_client import ApiResource
 from cm_api.endpoints.types import *
 from cm_api.api_client import ApiException
 import argparse
-import os
 import sys
-from collections import namedtuple
 
 
 def parse_args():
@@ -49,18 +47,15 @@ def main():
     @returns: A number representing the status of success.
     """
     settings = parse_args()
-    print len(sys.argv)
     if len(sys.argv) == 1 or len(sys.argv) > 17:
-        print ("came here 0")
         print_usage_message()
         quit(1)
 
-    print "came here 1"
     api_target = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
-    print "came here 2"
     cm = api_target.get_cloudera_manager()
     try:
         cm.create_peer(settings.peer_name, settings.source_cm_url, settings.source_user, settings.source_password)
+        print "Peer Successfully Added"
     except ApiException as e:
         if 'already exists' in str(e):
             print 'Peer Already exists'
