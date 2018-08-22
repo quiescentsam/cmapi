@@ -5,8 +5,8 @@ from cm_api.endpoints.types import *
 
 def get_service_name(SERVICE_TYPE, cluster_api, CLUSTER_NAME):
     """
-    Take the cluster APiResource and get SERVICE name
-    :return:
+    Inputs: Common name of the Service,cluster APiResource and cluster name
+    :return: Service name
     """
     cluster = cluster_api.get_cluster(CLUSTER_NAME)
     services = cluster.get_all_services()
@@ -15,7 +15,7 @@ def get_service_name(SERVICE_TYPE, cluster_api, CLUSTER_NAME):
             return service_name.name
 
 
-SOURCE_CM_HOST=""
+SOURCE_CM_HOST="34.226.244.149"
 TARGET_CM_HOST="18.205.59.216"
 TARGET_CLUSTER_NAME='sameer-testspot-dest'
 SOURCE_CLUSTER_NAME='sameer-testspot'
@@ -28,6 +28,7 @@ TARGET_YARN_SERVICE = get_service_name('YARN', api_target,TARGET_CLUSTER_NAME)
 
 print TARGET_HDFS_NAME
 print TARGET_YARN_SERVICE
+print SOURCE_HDFS_NAME
 
 
 
