@@ -19,8 +19,8 @@ api_target = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
 cluster = api_target.get_cluster(TARGET_CLUSTER_NAME)
 services = cluster.get_all_services()
 print services[2].name
-for a in services.name:
-    print a
+for a in services:
+    print a.name
 print type(services)
 
 # PEER_NAME='peer1'
