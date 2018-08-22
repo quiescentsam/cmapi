@@ -86,11 +86,11 @@ def main():
     # schs = hdfs.get_replication_schedules()
     # print schs
     cmd = hdfs.trigger_replication_schedule(settings.schedule_id)
-    cmd = cmd.wait()
+    cmd.wait()
     result = hdfs.get_replication_schedule(settings.schedule_id).history[0].hdfsResult
     print result.jobId
     print result.jobDetailsUri
-    print result
+    print result.
 
     return 0
 
