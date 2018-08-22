@@ -26,6 +26,8 @@ def parse_args():
                         help="The password to log into Source Cloudera Manager with." )
     parser.add_argument("--peer-name" , metavar='PEER_NAME', type=str, default='peer1',
                         help="ALias Name to be created of the Source cluster" )
+    parser.add_argument('-src-path', "--source-path", metavar='SOURCE PATH')
+
     return parser.parse_args()
 
 
@@ -91,7 +93,7 @@ def main():
                                         peerName=PEER_NAME,
                                         clusterName=SOURCE_CLUSTER_NAME,
                                         serviceName=SOURCE_HDFS_NAME)
-    hdfs_args.sourcePath = '/'
+    hdfs_args.sourcePath = settings.source-path
     hdfs_args.destinationPath = '/'
     hdfs_args.mapreduceServiceName = TARGET_YARN_SERVICE
 
