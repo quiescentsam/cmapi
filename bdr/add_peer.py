@@ -77,17 +77,19 @@ def main():
     @returns: A number representing the status of success.
     """
     settings = parse_args()
-    # print len(sys.argv)
-    if len(sys.argv) == 1 or len(sys.argv) > 17:
-        printusagemessage()
-    quit(1)
+    print len(sys.argv)
+    # if len(sys.argv) == 1 or len(sys.argv) > 17:
+    #     printusagemessage()
+    # quit(1)
 
     # TARGET_CM_HOST = "18.205.59.216"
     # SOURCE_CM_URL = "http://34.226.244.149:7180/"
+    print "came here 1"
     api_target = ApiResource(settings.host, settings.port, settings.username,settings.password, settings.use_tls, 14)
-
+    print "came here 2"
     # api_root = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
     cm = api_target.get_cloudera_manager()
+
     cm.create_peer(settings.peer_name, settings.source_cm_url, settings.source_user, settings.source_password)
 
     return 0
