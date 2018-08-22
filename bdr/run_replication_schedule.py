@@ -2,7 +2,7 @@
 
 from cm_api.api_client import ApiResource
 from cm_api.endpoints.types import *
-from ReplicationResult import *
+from ReplicationResult import ApiHdfsReplicationResult
 
 PEER_NAME='peer1'
 SOURCE_CLUSTER_NAME='sameer-testspot'
