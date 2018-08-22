@@ -35,11 +35,10 @@ def parse_args():
 
 
 def print_usage_message():
-    print ("Usage: python add_peer.py")
-    print ("Example that lists queries that have run more than 10 minutes:")
-    print ("python add_peer.py --host 18.205.59.216 --port 7180 --username admin --password admin "
-           "--source_cm_url http://34.226.244.149:7180/ --source-user admin --source-password admin --peer-name peer2")
-    print ("Example that creates peer with name peer2")
+    print ("Usage: add_peer.py [-h] [-s HOST] [-p port] [-u USERNAME] [-pwd PASSWORD]
+                                 [--use-tls] [--source_cm_url Source Cloudera Manager URL]
+                                 [--source-user Source Cloudera Manager Username]
+                                 [--source-password SOURCE_CM_PWD] [--peer-name PEER_NAME]")
 
 
 
