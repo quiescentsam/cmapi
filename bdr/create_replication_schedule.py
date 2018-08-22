@@ -36,10 +36,16 @@ def parse_args():
     return parser.parse_args()
 
 def print_usage_message():
-    print ("Usage: add_peer.py [-h] [-s HOST] [-p port] [-u USERNAME] [-pwd PASSWORD] \
-                                 [--use-tls] [--source_cm_url Source Cloudera Manager URL] \
-                                 [--source-user Source Cloudera Manager Username] \
-                                 [--source-password SOURCE_CM_PWD] [--peer-name PEER_NAME]")
+    print ("usage: create_replication_schedule.py [-h] [-s HOST] [-p port] [-u USERNAME] \
+          [-pwd PASSWORD] [--use-tls] \
+          [--source-server Source Cloudera Manager URL] \
+          [--source-port Source port] \
+          [--source-user Source Cloudera Manager Username] \
+          [--source-password SOURCE_CM_PWD] \
+          [--s-use-tls] [--peer-name PEER_NAME] \
+          [-sp SOURCE PATH] [-tp DESTINATION PATH] \
+          [--source-cluster-name Source Cluster Name] \
+          [--target-cluster-name Destination Cluster Name]")
 
 
 
@@ -68,8 +74,7 @@ def main():
         quit(1)
 
     api_target = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
-    api_source = ApiResource(settings.source_server, settings.source_port, settings.source_user,settings.password, settings.s_use_tls, 14)
-    # cm_dest = api_dest.get_cloudera_manager()
+    api_source = ApiResource(settings.source_server, settings.source_port, settings.source_user,settings.source_password, settings.s_use_tls, 14)
 
     SOURCE_HDFS_NAME = get_service_name('HDFS',api_source, settings.source_cluster_name)
     TARGET_YARN_SERVICE = get_service_name('YARN', api_target, settings.target_cluster_name)
@@ -89,7 +94,8 @@ def main():
     end = start + datetime.timedelta(days=365) # The time after which the scheduled activity will no longer be triggered.
 
     schedule = hdfs.create_replication_schedule(start, end, "DAY", 1, True, hdfs_args)
-
+    print schedule
+    print type(schedule)
 
 
     return 0
