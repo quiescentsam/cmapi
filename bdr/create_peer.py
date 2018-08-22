@@ -43,7 +43,7 @@ def parse_args():
     """
     parser = argparse.ArgumentParser(description="Creating peer for BDR",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('host', metavar='HOST', type=str, help="The Cloudera Manager host")
+    parser.add_argument('--host', metavar='HOST', type=str, help="The Cloudera Manager host")
     # parser.add_argument('cluster', metavar='CLUSTER', type=str, help="The name of the target cluster")
     parser.add_argument('--port', metavar='port', type=int, default=7180, help="Cloudera Manager's port.")
     parser.add_argument('--username', metavar='USERNAME', type=str, default='admin',
@@ -61,12 +61,15 @@ def parse_args():
     return parser.parse_args()
 
 
-def printUsageMessage():
+def printUsagemessage():
     print ("Usage: killLongRunningImpalaQueries.py <queryRunningSeconds>  [KILL]")
     print ("Example that lists queries that have run more than 10 minutes:")
-    print ("./killLongRunningImpalaQueries.py 600")
+    print ("python create_peer.py --host 18.205.59.216 --port 7180 --username admin --password admin --source_cm_url http://34.226.244.149:7180/ --source-user admin --source-password admin --peer-name peer2
+           ")
     print ("Example that kills queries that have run more than 10 minutes:")
     print ("./killLongRunningImpalaQueries.py 600 KILL")
+
+
 
 def main():
     """
