@@ -1,33 +1,25 @@
 #!/usr/bin/env python
 
 
-## *******************************************************************************************
-##  run_replication_schedule.py
-##
-##  Executes the Replication Schedule
-##
-##  Usage: python run_replication_schedule.py -s <CM hostname> -id <schdule id> --target-cluster-name <target cluster name>
-##
-##   python run_replication_schedule.py [-h] [-s HOST] [-p port] [-u USERNAME]
-##    [-pwd PASSWORD] [--use-tls]
-##    [-id Schedule ID]
-##    [-tc Destination Cluster Name]"
-##
-##    Set queryRunningSeconds to the threshold considered "too long"
-##    for an Impala query to run, so that queries that have been running
-##    longer than that will be identifed as queries to be killed
-##
-##    The second argument "KILL" is optional
-##    Without this argument, no queries will actually be killed, instead a list
-##    of queries that are identified as running too long will just be printed to the console
-##    If the argument "KILL" is provided a cancel command will be issues for each selcted query
-##
-##    CM versions <= 5.4 require Full Administrator role to cancel Impala queries
-##
-##    Set the CM URL, Cluster Name, login and password in the settings below
-##
-##    This script assumes there is only a single Impala service per cluster
-##
+# *******************************************************************************************
+#  run_replication_schedule.py
+#
+#  Executes the Replication Schedule
+#
+#  Usage: python run_replication_schedule.py -s <CM hostname> -id <schdule id>
+#         --target-cluster-name <target cluster name>
+#
+#  python run_replication_schedule.py [-h] [-s HOST] [-p port] [-u USERNAME]
+#    [-pwd PASSWORD] [--use-tls]
+#    [-id Schedule ID]
+#    [-tc Destination Cluster Name]"
+#
+#   CM versions <= 5.4 require BDR Administrator to trigger the BDR job
+#
+#    Needs  CM hostname , Cluster Name, login and password of Target cluster
+#
+#    This script assumes there is only a single HDFS service per cluster
+#
 ## *******************************************************************************************
 
 from cm_api.api_client import ApiResource
@@ -106,8 +98,8 @@ def main():
         print "numFilesSkipped:" + str(hdfsresult.numFilesSkipped)
         print "numBytesSkipped:" + str(hdfsresult.numBytesSkipped)
 
+     return 0
 
-    return 0
 
 if __name__ == '__main__':
     sys.exit(main())

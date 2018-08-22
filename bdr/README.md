@@ -40,6 +40,16 @@ optional arguments:
 
 
 
+```
+(python27) ssiddiqui-MBP15:bdr ssiddiqui$ python run_replication_schedule.py -s 18.205.59.216 -id 15 --target-cluster-name sameer-testspot-dest
+######  Replication job succeeded  #####
+Yarn Job ID :job_1534885437444_0010
+Job Details URL:/cmf/services/3/applications/?startTime=1534971867291&endTime=1534971910853#filters=application_id=job_1534885437444_0010
+numFilesCopied:0
+numBytesCopied:0
+numFilesSkipped:8
+numBytesSkipped:1430044
+```
 
 
 
