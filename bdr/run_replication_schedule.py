@@ -93,6 +93,7 @@ def main():
         print "Setup Error:" + str(result.setupError)
     else:
         print "#### Replication Job Succeeded ####"
+        print result.numBytesCopyFailed
         print "Yarn Job ID :" + str(result.jobId)
         print "numFilesCopied:" + str(result.numFilesCopied)
         print "numBytesCopied:" + str(result.numBytesCopied)
