@@ -15,13 +15,17 @@ def get_service_name(SERVICE_TYPE, cluster_api, CLUSTER_NAME):
             return service_name.name
 
 
-
+SOURCE_CM_HOST=""
 TARGET_CM_HOST="18.205.59.216"
 TARGET_CLUSTER_NAME='sameer-testspot-dest'
+SOURCE_CLUSTER_NAME='sameer-testspot'
 api_target = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
+api_source = ApiResource(SOURCE_CM_HOST, username="admin", password="admin")
 
 TARGET_HDFS_NAME = get_service_name('HDFS',api_target,TARGET_CLUSTER_NAME)
+SOURCE_HDFS_NAME = get_service_name('HDFS',api_source, SOURCE_CLUSTER_NAME)
 TARGET_YARN_SERVICE = get_service_name('YARN', api_target,TARGET_CLUSTER_NAME)
+
 print TARGET_HDFS_NAME
 print TARGET_YARN_SERVICE
 
