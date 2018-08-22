@@ -30,6 +30,8 @@ def parse_args():
                         help="ALias Name to be created of the Source cluster" )
     parser.add_argument('-src-path', "--source-path", metavar='SOURCE PATH')
     parser.add_argument('-dest-path', '--destination-path', metavar='DESTINATION PATH')
+    parser.add_argument('--source-cluster-name', metavar='Source Cluster Name')
+    parser.add_argument('--destination-cluster-name', metavar='Destination Cluster Name')
 
     return parser.parse_args()
 
@@ -54,17 +56,17 @@ def get_service_name(SERVICE_TYPE, cluster_api, CLUSTER_NAME):
 
 
 
-PEER_NAME='peer1'
-SOURCE_CLUSTER_NAME='sameer-testspot'
-SOURCE_HDFS_NAME='CD-HDFS-VHPVExTo'
-TARGET_CLUSTER_NAME='sameer-testspot-dest'
-TARGET_HDFS_NAME='CD-HDFS-KukHKtDK'
-TARGET_YARN_SERVICE='CD-YARN-rnMjblqZ'
-TARGET_CM_HOST="18.205.59.216"
-SOURCE_CM_HOST="34.226.244.149"
-TARGET_CM_HOST="18.205.59.216"
-TARGET_CLUSTER_NAME='sameer-testspot-dest'
-SOURCE_CLUSTER_NAME='sameer-testspot'
+# PEER_NAME='peer1'
+# SOURCE_CLUSTER_NAME='sameer-testspot'
+# SOURCE_HDFS_NAME='CD-HDFS-VHPVExTo'
+# TARGET_CLUSTER_NAME='sameer-testspot-dest'
+# TARGET_HDFS_NAME='CD-HDFS-KukHKtDK'
+# TARGET_YARN_SERVICE='CD-YARN-rnMjblqZ'
+# TARGET_CM_HOST="18.205.59.216"
+# SOURCE_CM_HOST="34.226.244.149"
+# TARGET_CM_HOST="18.205.59.216"
+# TARGET_CLUSTER_NAME='sameer-testspot-dest'
+# SOURCE_CLUSTER_NAME='sameer-testspot'
 # api_target = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
 # api_source = ApiResource(SOURCE_CM_HOST, username="admin", password="admin")
 
@@ -91,19 +93,17 @@ def main():
 
     api_dest = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
     api_source = ApiResource(settings.source_server, settings.source_port, settings.source_user,settings.password, settings.s_use_tls, 14)
-    cm_dest = api_dest.get_cloudera_manager()
+    # cm_dest = api_dest.get_cloudera_manager()
 
-    SOURCE_HDFS_NAME = get_service_name('HDFS',api_source, SOURCE_CLUSTER_NAME)
-    TARGET_YARN_SERVICE = get_service_name('YARN', api_dest,TARGET_CLUSTER_NAME)
-    SOURCE_HDFS_NAME=get_service_name('HDFS',api_source, SOURCE_CLUSTER_NAME)
+    SOURCE_HDFS_NAME = get_service_name('HDFS',api_source, settings.source_cluster_name)
+    TARGET_YARN_SERVICE = get_service_name('YARN', api_dest, settings.target_cluster_name)
+    SOURCE_HDFS_NAME=get_service_name('HDFS',api_source, settings.source_cluster_name)
 
     hdfs = api_dest.get_cluster(TARGET_CLUSTER_NAME).get_service(TARGET_HDFS_NAME)
 
     hdfs_args = ApiHdfsReplicationArguments(None)
-    hdfs_args.sourceService = ApiServiceRef(None,
-                                        peerName=settings.peer_name,
-                                        clusterName=SOURCE_CLUSTER_NAME,
-                                        serviceName=SOURCE_HDFS_NAME)
+    hdfs_args.sourceService = ApiServiceRef(None, peerName=settings.peer_name, clusterName=SOURCE_CLUSTER_NAME,
+                                            serviceName=SOURCE_HDFS_NAME)
     hdfs_args.sourcePath = settings.source_path
     hdfs_args.destinationPath = settings.dest_path
     hdfs_args.mapreduceServiceName = TARGET_YARN_SERVICE
