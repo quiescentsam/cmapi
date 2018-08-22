@@ -1,3 +1,49 @@
+class Attr(object):
+    """
+    Encapsulates information about an attribute in the JSON encoding of the
+    object. It identifies properties of the attribute such as whether it's
+    read-only, its type, etc.
+    """
+    DATE_FMT = "%Y-%m-%dT%H:%M:%S.%fZ"
+
+    def __init__(self, atype=None, rw=True, is_api_list=False):
+        self._atype = atype
+        self._is_api_list = is_api_list
+        self.rw = rw
+
+    def to_json(self, value, preserve_ro):
+        """
+        Returns the JSON encoding of the given attribute value.
+
+        If the value has a 'to_json_dict' object, that method is called. Otherwise,
+        the following values are returned for each input type:
+         - datetime.datetime: string with the API representation of a date.
+         - dictionary: if 'atype' is ApiConfig, a list of ApiConfig objects.
+         - python list: python list (or ApiList) with JSON encoding of items
+         - the raw value otherwise
+        """
+        if hasattr(value, 'to_json_dict'):
+            return value.to_json_dict(preserve_ro)
+        elif isinstance(value, dict) and self._atype == ApiConfig:
+            return config_to_api_list(value)
+        elif isinstance(value, datetime.datetime):
+            return value.strftime(self.DATE_FMT)
+        elif isinstance(value, list) or isinstance(value, tuple):
+            if self._is_api_list:
+                return ApiList(value).to_json_dict()
+            else:
+                return [ self.to_json(x, preserve_ro) for x in value ]
+        else:
+            return value
+
+class ROAttr(Attr):
+    """
+    Subclass that just defines the attribute as read-only.
+    """
+    def __init__(self, atype=None, is_api_list=False):
+        Attr.__init__(self, atype=atype, rw=False, is_api_list=is_api_list)
+
+
 class BaseApiObject(object):
     """
     The BaseApiObject helps with (de)serialization from/to JSON.
@@ -139,6 +185,7 @@ class BaseApiObject(object):
         obj = cls(resource_root)
         obj._set_attrs(dic, allow_ro=True)
         return obj
+
 
 
 class ApiHdfsReplicationResult(BaseApiObject):
