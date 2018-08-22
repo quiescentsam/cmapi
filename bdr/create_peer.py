@@ -41,17 +41,23 @@ def parse_args():
     @rtype:  namespace
     @return: The parsed arguments.
     """
-    parser = argparse.ArgumentParser(description="Creating peer for BDR", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(description="Creating peer for BDR",
+                                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('host', metavar='HOST', type=str, help="The Cloudera Manager host")
     # parser.add_argument('cluster', metavar='CLUSTER', type=str, help="The name of the target cluster")
     parser.add_argument('--port', metavar='port', type=int, default=7180, help="Cloudera Manager's port.")
-    parser.add_argument('--username', metavar='USERNAME', type=str, default='admin', help="The username to log into Cloudera Manager with.")
-    parser.add_argument('--password', metavar='PASSWORD', type=str, default='admin', help="The password to log into Cloudera Manager with.")
+    parser.add_argument('--username', metavar='USERNAME', type=str, default='admin',
+                        help="The username to log into Cloudera Manager with.")
+    parser.add_argument('--password', metavar='PASSWORD', type=str, default='admin',
+                        help="The password to log into Cloudera Manager with.")
     parser.add_argument('--use-tls', action='store_true', help="Whether to use TLS to connect to Cloudera Manager.")
     parser.add_argument('--source_cm_url', metavar='SOURCE_CM_URL', type=str, help="full CM URL of the source cluster")
-    parser.add_argument("--source-user", metavar='SOURCE_CM_USER', type=str, default='admin', help="The username to log into Source Cloudera Manager with." )
-    parser.add_argument("--source-password", metavar='SOURCE_CM_PWD', type=str, default='admin', help="The password to log into Source Cloudera Manager with." )
-    parser.add_argument("--peer-name" , metavar='PEER_NAME', type=str, default='peer1', help="ALias Name to be created of the Source cluster" )
+    parser.add_argument("--source-user", metavar='SOURCE_CM_USER', type=str, default='admin',
+                        help="The username to log into Source Cloudera Manager with." )
+    parser.add_argument("--source-password", metavar='SOURCE_CM_PWD', type=str, default='admin',
+                        help="The password to log into Source Cloudera Manager with." )
+    parser.add_argument("--peer-name" , metavar='PEER_NAME', type=str, default='peer1',
+                        help="ALias Name to be created of the Source cluster" )
     return parser.parse_args()
 
 
