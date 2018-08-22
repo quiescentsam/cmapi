@@ -24,7 +24,6 @@
 
 from cm_api.api_client import ApiResource
 from cm_api.endpoints.types import *
-from ReplicationResult import ApiHdfsReplicationResult
 import argparse,sys
 
 def parse_args():
