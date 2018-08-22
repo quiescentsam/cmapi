@@ -100,17 +100,17 @@ def main():
     schedule.alertOnFail = True
     schedule = hdfs.update_replication_schedule(schedule.id, schedule)
 
-    print schedule.id
-    print schedule.alertOnFail
-    print schedule.hdfsArguments.removeMissingFiles
-    print schedule.hdfsArguments.sourcePath
-    print schedule.hdfsArguments.preserveXAttrs
-    print schedule.hdfsArguments.exclusionFilters
-    print schedule.hdfsArguments.replicationStrategy
-    print schedule.hdfsArguments.numMaps
-    print schedule.hdfsArguments.userName
-    print schedule.hdfsArguments.schedulerPoolName
-    print type(schedule)
+    print "Schedule created with Schdule ID:" + str(schedule.id)
+    # print schedule.alertOnFail
+    # print schedule.hdfsArguments.removeMissingFiles
+    # print schedule.hdfsArguments.sourcePath
+    # print schedule.hdfsArguments.preserveXAttrs
+    # print schedule.hdfsArguments.exclusionFilters
+    # print schedule.hdfsArguments.replicationStrategy
+    # print schedule.hdfsArguments.numMaps
+    # print schedule.hdfsArguments.userName
+    # print schedule.hdfsArguments.schedulerPoolName
+    # print type(schedule)
 
 
     return 0
