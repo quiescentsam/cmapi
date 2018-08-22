@@ -3,6 +3,15 @@
 from cm_api.api_client import ApiResource
 from cm_api.endpoints.types import *
 
+def get_service_name():
+    """
+    Take the cluster APiResource and get SERVICE name
+    :return:
+    """
+    api_target = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
+    services = api_target.get_all
+
+
 
 PEER_NAME='peer1'
 SOURCE_CLUSTER_NAME='sameer-testspot'
