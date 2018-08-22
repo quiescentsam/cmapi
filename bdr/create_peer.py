@@ -41,22 +41,26 @@ def parse_args():
     @rtype:  namespace
     @return: The parsed arguments.
     """
-    parser = argparse.ArgumentParser(description="Configure an existing cluster",
-                                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(description="Creating peer for BDR", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('host', metavar='HOST', type=str, help="The Cloudera Manager host")
-    parser.add_argument('cluster', metavar='CLUSTER', type=str,
-                        help="The name of the cluster to kerberize")
-    parser.add_argument('--port', metavar='port', type=int, default=7180,
-                        help="Cloudera Manager's port.")
-    parser.add_argument('--username', metavar='USERNAME', type=str, default='admin',
-                        help="The username to log into Cloudera Manager with.")
-    parser.add_argument('--password', metavar='PASSWORD', type=str, default='admin',
-                        help="The password to log into Cloudera Manager with.")
-    parser.add_argument('--use-tls', action='store_true',
-                        help="Whether to use TLS to connect to Cloudera Manager.")
+    # parser.add_argument('cluster', metavar='CLUSTER', type=str, help="The name of the target cluster")
+    parser.add_argument('--port', metavar='port', type=int, default=7180, help="Cloudera Manager's port.")
+    parser.add_argument('--username', metavar='USERNAME', type=str, default='admin', help="The username to log into Cloudera Manager with.")
+    parser.add_argument('--password', metavar='PASSWORD', type=str, default='admin', help="The password to log into Cloudera Manager with.")
+    parser.add_argument('--use-tls', action='store_true', help="Whether to use TLS to connect to Cloudera Manager.")
+    parser.add_argument('--source_cm_url', metavar='SOURCE_CM_URL', type=str, help="full CM URL of the source cluster")
+    parser.add_argument("--source-user", metavar='SOURCE_CM_USER', type=str, default='admin', help="The username to log into Source Cloudera Manager with." )
+    parser.add_argument("--source-password", metavar='SOURCE_CM_PWD', type=str, default='admin', help="The password to log into Source Cloudera Manager with." )
+    parser.add_argument("--peer-name" , metavar='PEER_NAME', type=str, default='peer1', help="ALias Name to be created of the Source cluster" )
     return parser.parse_args()
 
 
+def printUsageMessage():
+    print ("Usage: killLongRunningImpalaQueries.py <queryRunningSeconds>  [KILL]")
+    print ("Example that lists queries that have run more than 10 minutes:")
+    print ("./killLongRunningImpalaQueries.py 600")
+    print ("Example that kills queries that have run more than 10 minutes:")
+    print ("./killLongRunningImpalaQueries.py 600 KILL")
 
 def main():
     """
@@ -67,17 +71,16 @@ def main():
     settings = retrieve_args()
 
 
-    TARGET_CM_HOST = "18.205.59.216"
-    SOURCE_CM_URL = "http://34.226.244.149:7180/"
+    # TARGET_CM_HOST = "18.205.59.216"
+    # SOURCE_CM_URL = "http://34.226.244.149:7180/"
 
 
     api_target = ApiResource(settings.host, settings.port, settings.username,
                       settings.password, settings.use_tls, 14)
 
-    api_root = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
+    # api_root = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
     cm = api_target.get_cloudera_manager()
-    cm.create_peer("peer1", SOURCE_CM_URL, 'admin', 'admin')
-
+    cm.create_peer(settings.peer_name, settings.source_cm_url, settings.source_user, settings.source_password)
 
     return 0
 
