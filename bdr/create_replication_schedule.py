@@ -2,7 +2,7 @@
 
 from cm_api.api_client import ApiResource
 from cm_api.endpoints.types import *
-import argparse
+import argparse,sys
 
 def parse_args():
     """
@@ -27,9 +27,15 @@ def parse_args():
     parser.add_argument("--peer-name" , metavar='PEER_NAME', type=str, default='peer1',
                         help="ALias Name to be created of the Source cluster" )
     parser.add_argument('-src-path', "--source-path", metavar='SOURCE PATH')
+    parser.add_argument('-dest-path', '--destination-path', metavar='DESTINATION PATH')
 
     return parser.parse_args()
 
+def print_usage_message():
+    print ("Usage: add_peer.py [-h] [-s HOST] [-p port] [-u USERNAME] [-pwd PASSWORD] \
+                                 [--use-tls] [--source_cm_url Source Cloudera Manager URL] \
+                                 [--source-user Source Cloudera Manager Username] \
+                                 [--source-password SOURCE_CM_PWD] [--peer-name PEER_NAME]")
 
 
 
@@ -81,20 +87,19 @@ def main():
         print_usage_message()
         quit(1)
 
-    api_target = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
-    cm_target = api_target.get_cloudera_manager()
+    api_dest = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
+    api_source = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
+    cm_dest = api_dest.get_cloudera_manager()
 
-
-
-    hdfs = api_root.get_cluster(TARGET_CLUSTER_NAME).get_service(TARGET_HDFS_NAME)
+    hdfs = api_dest.get_cluster(TARGET_CLUSTER_NAME).get_service(TARGET_HDFS_NAME)
 
     hdfs_args = ApiHdfsReplicationArguments(None)
     hdfs_args.sourceService = ApiServiceRef(None,
                                         peerName=PEER_NAME,
                                         clusterName=SOURCE_CLUSTER_NAME,
                                         serviceName=SOURCE_HDFS_NAME)
-    hdfs_args.sourcePath = settings.source-path
-    hdfs_args.destinationPath = '/'
+    hdfs_args.sourcePath = settings.source_path
+    hdfs_args.destinationPath = settings.dest_path
     hdfs_args.mapreduceServiceName = TARGET_YARN_SERVICE
 
     # creating a schedule with daily frequency
@@ -110,7 +115,3 @@ def main():
 if __name__ == '__main__':
     sys.exit(main())
 
-
-
-
-api_root = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
