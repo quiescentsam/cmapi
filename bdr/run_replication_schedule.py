@@ -6,7 +6,12 @@
 ##
 ##  Executes the Replication Schedule
 ##
-##  Usage: ./killLongRunningImpalaQueries.py  queryRunningSeconds [KILL]
+##  Usage: python run_replication_schedule.py -s <CM hostname> -id <schdule id> --target-cluster-name <target cluster name>
+##
+##   python run_replication_schedule.py [-h] [-s HOST] [-p port] [-u USERNAME]
+##    [-pwd PASSWORD] [--use-tls]
+##    [-id Schedule ID]
+##    [-tc Destination Cluster Name]"
 ##
 ##    Set queryRunningSeconds to the threshold considered "too long"
 ##    for an Impala query to run, so that queries that have been running
