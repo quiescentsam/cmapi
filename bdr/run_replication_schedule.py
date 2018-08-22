@@ -1,5 +1,30 @@
 #!/usr/bin/env python
 
+
+## *******************************************************************************************
+##  run_replication_schedule.py
+##
+##  Kills Long Running Impala Queries
+##
+##  Usage: ./killLongRunningImpalaQueries.py  queryRunningSeconds [KILL]
+##
+##    Set queryRunningSeconds to the threshold considered "too long"
+##    for an Impala query to run, so that queries that have been running
+##    longer than that will be identifed as queries to be killed
+##
+##    The second argument "KILL" is optional
+##    Without this argument, no queries will actually be killed, instead a list
+##    of queries that are identified as running too long will just be printed to the console
+##    If the argument "KILL" is provided a cancel command will be issues for each selcted query
+##
+##    CM versions <= 5.4 require Full Administrator role to cancel Impala queries
+##
+##    Set the CM URL, Cluster Name, login and password in the settings below
+##
+##    This script assumes there is only a single Impala service per cluster
+##
+## *******************************************************************************************
+
 from cm_api.api_client import ApiResource
 from cm_api.endpoints.types import *
 from ReplicationResult import ApiHdfsReplicationResult
@@ -20,7 +45,7 @@ def parse_args():
     parser.add_argument('-pwd', '--password', metavar='PASSWORD', type=str, default='admin',
                         help="The password to log into Cloudera Manager with.")
     parser.add_argument('--use-tls', action='store_true', help="Whether to use TLS to connect to Cloudera Manager.")
-    parser.add_argument('-id', '--schedule-id', metavar='Schedule ID')
+    parser.add_argument('-id', '--schedule-id', metavar='Schedule ID', type=int)
     parser.add_argument('-tc','--target-cluster-name', metavar='Destination Cluster Name')
     return parser.parse_args()
 
