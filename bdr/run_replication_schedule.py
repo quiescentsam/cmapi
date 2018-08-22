@@ -21,5 +21,6 @@ schs = hdfs.get_replication_schedules()
 print schs
 # cmd = hdfs.trigger_replication_schedule(6)
 # cmd = cmd.wait()
-# result = hdfs.get_replication_schedule(6).history[0].hdfsResult
-result = hdfs.get_replication_schedules()
+result = hdfs.get_replication_schedule(6).history[0].hdfsResult
+print result
+# result = hdfs.get_replication_schedules()
