@@ -15,10 +15,9 @@ def parse_args():
     @rtype:  namespace
     @return: The parsed arguments.
     """
-    parser = argparse.ArgumentParser(description="Creating peer for BDR",
+    parser = argparse.ArgumentParser(description="Adding Source cluster as 'peer' in Destination Cloudera Manager ",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--host', metavar='HOST', type=str, help="The Cloudera Manager host")
-    # parser.add_argument('cluster', metavar='CLUSTER', type=str, help="The name of the target cluster")
     parser.add_argument('--port', metavar='port', type=int, default=7180, help="Cloudera Manager's port.")
     parser.add_argument('--username', metavar='USERNAME', type=str, default='admin',
                         help="The username to log into Cloudera Manager with.")
@@ -35,7 +34,7 @@ def parse_args():
     return parser.parse_args()
 
 
-def printusagemessage():
+def print_usage_message():
     print ("Usage: python add_peer.py")
     print ("Example that lists queries that have run more than 10 minutes:")
     print ("python add_peer.py --host 18.205.59.216 --port 7180 --username admin --password admin "
@@ -53,7 +52,7 @@ def main():
     settings = parse_args()
     print len(sys.argv)
     # if len(sys.argv) == 1 or len(sys.argv) > 17:
-    #     printusagemessage()
+    #     print_usage_message()
     # quit(1)
 
     # TARGET_CM_HOST = "18.205.59.216"
