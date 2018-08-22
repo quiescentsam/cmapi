@@ -96,10 +96,10 @@ def main():
         print "######  Replication job succeeded  #####"
         print "Yarn Job ID :" + str(hdfsresult.jobId)
         print "Job Details URL:" + str(hdfsresult.jobDetailsUri)
-        print "numFilesCopied:" + str(result.numFilesCopied)
-        print "numBytesCopied:" + str(result.numBytesCopied)
-        print "numFilesSkipped:" + str(result.numFilesSkipped)
-        print "numBytesSkipped:" + str(result.numBytesSkipped)
+        print "numFilesCopied:" + str(hdfsresult.numFilesCopied)
+        print "numBytesCopied:" + str(hdfsresult.numBytesCopied)
+        print "numFilesSkipped:" + str(hdfsresult.numFilesSkipped)
+        print "numBytesSkipped:" + str(hdfsresult.numBytesSkipped)
 
 
     return 0
