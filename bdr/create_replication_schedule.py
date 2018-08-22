@@ -19,11 +19,13 @@ def parse_args():
     parser.add_argument('-pwd', '--password', metavar='PASSWORD', type=str, default='admin',
                         help="The password to log into Cloudera Manager with.")
     parser.add_argument('--use-tls', action='store_true', help="Whether to use TLS to connect to Cloudera Manager.")
-    parser.add_argument('--source_server', metavar='Source Cloudera Manager URL', type=str, help="Full CM URL of the source cluster ie. https://hostname:7183/")
+    parser.add_argument('--source-server', metavar='Source Cloudera Manager URL', type=str, help="The Cloudera Manager host")
+    parser.add_argument('--source-port', metavar='Source port', type=int, default=7180, help="Cloudera Manager's port.")
     parser.add_argument("--source-user", metavar='Source Cloudera Manager Username', type=str, default='admin',
                         help="The username to log into Source Cloudera Manager with." )
     parser.add_argument("--source-password", metavar='SOURCE_CM_PWD', type=str, default='admin',
                         help="The password to log into Source Cloudera Manager with." )
+    parser.add_argument('--s-use-tls', action='store_true', help="Whether to use TLS to connect to Cloudera Manager.")
     parser.add_argument("--peer-name" , metavar='PEER_NAME', type=str, default='peer1',
                         help="ALias Name to be created of the Source cluster" )
     parser.add_argument('-src-path', "--source-path", metavar='SOURCE PATH')
@@ -63,16 +65,16 @@ SOURCE_CM_HOST="34.226.244.149"
 TARGET_CM_HOST="18.205.59.216"
 TARGET_CLUSTER_NAME='sameer-testspot-dest'
 SOURCE_CLUSTER_NAME='sameer-testspot'
-api_target = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
-api_source = ApiResource(SOURCE_CM_HOST, username="admin", password="admin")
+# api_target = ApiResource(TARGET_CM_HOST, username="admin", password="admin")
+# api_source = ApiResource(SOURCE_CM_HOST, username="admin", password="admin")
 
-TARGET_HDFS_NAME = get_service_name('HDFS',api_target,TARGET_CLUSTER_NAME)
-SOURCE_HDFS_NAME = get_service_name('HDFS',api_source, SOURCE_CLUSTER_NAME)
-TARGET_YARN_SERVICE = get_service_name('YARN', api_target,TARGET_CLUSTER_NAME)
+# TARGET_HDFS_NAME = get_service_name('HDFS',api_target,TARGET_CLUSTER_NAME)
+# SOURCE_HDFS_NAME = get_service_name('HDFS',api_source, SOURCE_CLUSTER_NAME)
+# TARGET_YARN_SERVICE = get_service_name('YARN', api_target,TARGET_CLUSTER_NAME)
 
-print TARGET_HDFS_NAME
-print TARGET_YARN_SERVICE
-print SOURCE_HDFS_NAME
+# print TARGET_HDFS_NAME
+# print TARGET_YARN_SERVICE
+# print SOURCE_HDFS_NAME
 
 
 
@@ -88,14 +90,18 @@ def main():
         quit(1)
 
     api_dest = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
-    api_source = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
+    api_source = ApiResource(settings.source_server, settings.source_port, settings.source_user,settings.password, settings.s_use_tls, 14)
     cm_dest = api_dest.get_cloudera_manager()
+
+    SOURCE_HDFS_NAME = get_service_name('HDFS',api_source, SOURCE_CLUSTER_NAME)
+    TARGET_YARN_SERVICE = get_service_name('YARN', api_dest,TARGET_CLUSTER_NAME)
+    SOURCE_HDFS_NAME=get_service_name('HDFS',api_source, SOURCE_CLUSTER_NAME)
 
     hdfs = api_dest.get_cluster(TARGET_CLUSTER_NAME).get_service(TARGET_HDFS_NAME)
 
     hdfs_args = ApiHdfsReplicationArguments(None)
     hdfs_args.sourceService = ApiServiceRef(None,
-                                        peerName=PEER_NAME,
+                                        peerName=settings.peer_name,
                                         clusterName=SOURCE_CLUSTER_NAME,
                                         serviceName=SOURCE_HDFS_NAME)
     hdfs_args.sourcePath = settings.source_path
