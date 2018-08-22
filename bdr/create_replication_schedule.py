@@ -31,7 +31,7 @@ def parse_args():
     parser.add_argument('-src-path', "--source-path", metavar='SOURCE PATH')
     parser.add_argument('-dest-path', '--destination-path', metavar='DESTINATION PATH')
     parser.add_argument('--source-cluster-name', metavar='Source Cluster Name')
-    parser.add_argument('--destination-cluster-name', metavar='Destination Cluster Name')
+    parser.add_argument('--target-cluster-name', metavar='Destination Cluster Name')
 
     return parser.parse_args()
 
@@ -99,7 +99,7 @@ def main():
     TARGET_YARN_SERVICE = get_service_name('YARN', api_dest, settings.target_cluster_name)
     SOURCE_HDFS_NAME=get_service_name('HDFS',api_source, settings.source_cluster_name)
 
-    hdfs = api_dest.get_cluster(TARGET_CLUSTER_NAME).get_service(TARGET_HDFS_NAME)
+    hdfs = api_dest.get_cluster(settings.target_cluster_name).get_service(TARGET_HDFS_NAME)
 
     hdfs_args = ApiHdfsReplicationArguments(None)
     hdfs_args.sourceService = ApiServiceRef(None, peerName=settings.peer_name, clusterName=SOURCE_CLUSTER_NAME,
