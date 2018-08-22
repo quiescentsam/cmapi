@@ -35,9 +35,9 @@ def parse_args():
 
 
 def print_usage_message():
-    print ("Usage: add_peer.py [-h] [-s HOST] [-p port] [-u USERNAME] [-pwd PASSWORD]
-                                 [--use-tls] [--source_cm_url Source Cloudera Manager URL]
-                                 [--source-user Source Cloudera Manager Username]
+    print ("Usage: add_peer.py [-h] [-s HOST] [-p port] [-u USERNAME] [-pwd PASSWORD] \
+                                 [--use-tls] [--source_cm_url Source Cloudera Manager URL] \
+                                 [--source-user Source Cloudera Manager Username] \
                                  [--source-password SOURCE_CM_PWD] [--peer-name PEER_NAME]")
 
 
@@ -50,14 +50,13 @@ def main():
     """
     settings = parse_args()
     print len(sys.argv)
-    # if len(sys.argv) == 1 or len(sys.argv) > 17:
-    #     print_usage_message()
-    # quit(1)
+    if len(sys.argv) == 1 or len(sys.argv) > 17:
+        print ("came here 0")
+        print_usage_message()
+        quit(1)
 
-    # TARGET_CM_HOST = "18.205.59.216"
-    # SOURCE_CM_URL = "http://34.226.244.149:7180/"
     print "came here 1"
-    api_target = ApiResource(settings.host, settings.port, settings.username,settings.password, settings.use_tls, 14)
+    api_target = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
     print "came here 2"
     cm = api_target.get_cloudera_manager()
     try:
