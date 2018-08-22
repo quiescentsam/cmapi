@@ -24,8 +24,8 @@ def parse_args():
     parser.add_argument('--password', metavar='PASSWORD', type=str, default='admin',
                         help="The password to log into Cloudera Manager with.")
     parser.add_argument('--use-tls', action='store_true', help="Whether to use TLS to connect to Cloudera Manager.")
-    parser.add_argument('--source_cm_url', metavar='SOURCE_CM_URL', type=str, help="full CM URL of the source cluster")
-    parser.add_argument("--source-user", metavar='SOURCE_CM_USER', type=str, default='admin',
+    parser.add_argument('--source_cm_url', metavar='Source CLoudera Manager URL', type=str, help="Full CM URL of the source cluster ie. https://hostname:7183/")
+    parser.add_argument("--source-user", metavar='Source CLoudera Mamnager Username', type=str, default='admin',
                         help="The username to log into Source Cloudera Manager with." )
     parser.add_argument("--source-password", metavar='SOURCE_CM_PWD', type=str, default='admin',
                         help="The password to log into Source Cloudera Manager with." )
