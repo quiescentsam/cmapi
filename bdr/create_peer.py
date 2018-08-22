@@ -61,7 +61,7 @@ def parse_args():
     return parser.parse_args()
 
 
-def printUsagemessage():
+def printusagemessage():
     print ("Usage: killLongRunningImpalaQueries.py <queryRunningSeconds>  [KILL]")
     print ("Example that lists queries that have run more than 10 minutes:")
     print ("python create_peer.py --host 18.205.59.216 --port 7180 --username admin --password admin --source_cm_url http://34.226.244.149:7180/ --source-user admin --source-password admin --peer-name peer2
@@ -78,7 +78,9 @@ def main():
     @returns: A number representing the status of success.
     """
     settings = retrieve_args()
-
+    if len(sys.argv) == 1 or len(sys.argv) > 8:
+        printusagemessage()
+    quit(1)
 
     # TARGET_CM_HOST = "18.205.59.216"
     # SOURCE_CM_URL = "http://34.226.244.149:7180/"
