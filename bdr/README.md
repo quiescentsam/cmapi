@@ -44,7 +44,19 @@ optional arguments:
 
 ## Create a Schedule
 
-
+```
+(python27) bash-3.2$ python create_replication_schedule.py -h
+usage: create_replication_schedule.py [-h] [-s HOST] [-p port] [-u USERNAME]
+                                      [-pwd PASSWORD] [--use-tls]
+                                      [--source-server Source Cloudera Manager URL]
+                                      [--source-port Source port]
+                                      [--source-user Source Cloudera Manager Username]
+                                      [--source-password SOURCE_CM_PWD]
+                                      [--s-use-tls] [--peer-name PEER_NAME]
+                                      [-sp SOURCE PATH] [-tp DESTINATION PATH]
+                                      [--source-cluster-name Source Cluster Name]
+                                      [--target-cluster-name Destination Cluster Name]
+```
 
 ## Run replication
 
@@ -62,7 +74,7 @@ numBytesSkipped:1430044
 
 
 
-# Issues 
+### Issues 
 
 We might hit below issue based on CM version
 https://github.com/cloudera/cm_api/issues/31 
