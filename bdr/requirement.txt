@@ -1,0 +1,2 @@
+cm-api==14.0.0
+simplejson==3.16.0
