@@ -58,7 +58,9 @@ numBytesSkipped:1430044
 
 
 
+# Issues 
 
+https://github.com/cloudera/cm_api/issues/31 
 
 class ApiHdfsReplicationResult(BaseApiObject):
   _ATTRIBUTES = {
