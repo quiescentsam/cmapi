@@ -60,8 +60,10 @@ numBytesSkipped:1430044
 
 # Issues 
 
+We might hit below issue based on CM version
 https://github.com/cloudera/cm_api/issues/31 
 
+````
 class ApiHdfsReplicationResult(BaseApiObject):
   _ATTRIBUTES = {
     'progress'            : ROAttr(),
@@ -87,3 +89,4 @@ class ApiHdfsReplicationResult(BaseApiObject):
     'remainingTime'       : ROAttr(),
     'throughput'          : ROAttr(),
   }
+```
