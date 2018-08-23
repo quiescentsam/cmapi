@@ -1,5 +1,9 @@
 #BDR automation
 
+###To Do
+* add S3 connector
+* Update add replication schdule to accept S3 dest
+
 ##ADD Peer
 
 ```(python27) ssiddiqui-MBP15:bdr ssiddiqui$ python add_peer.py -h
