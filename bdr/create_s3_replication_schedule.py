@@ -89,7 +89,7 @@ def main():
     schedule = hdfs.create_replication_schedule(start, end, "DAY", 1, True, hdfs_cloud_args)
 
     ## Updating the Schedule's properties
-    schedule.hdfsArguments.removeMissingFiles = False
+    #schedule.hdfsArguments.removeMissingFiles = False
     schedule.alertOnFail = True
     schedule = hdfs.update_replication_schedule(schedule.id, schedule)
 
