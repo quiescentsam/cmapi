@@ -67,10 +67,8 @@ def main():
 
     api = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
 
-
-    SOURCE_HDFS_NAME = get_service_name('HDFS',api_source, settings.source_cluster_name)
-    TARGET_YARN_SERVICE = get_service_name('YARN', api_target, settings.target_cluster_name)
-    TARGET_HDFS_NAME=get_service_name('HDFS',api_target, settings.target_cluster_name)
+    YARN_SERVICE = get_service_name('YARN', api, settings.cluster_name)
+    HDFS_NAME=get_service_name('HDFS',api, settings.cluster_name)
 
     hdfs = api_target.get_cluster(settings.target_cluster_name).get_service(TARGET_HDFS_NAME)
 
