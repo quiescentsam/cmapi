@@ -1,8 +1,6 @@
 #BDR automation
 
-###To Do
-* add S3 connector - Done
-* Update add replication schdule to accept S3 dest
+
 
 ##ADD Peer
 
@@ -74,7 +72,32 @@ numBytesSkipped:1430044
 
 ## ADD S3 account
 
+```
+(python27) bash-3.2$ python add_s3account.py -s 34.226.244.149 -akey xxxxxxxxxx -skey 'xxxxxxx'
+S3 Account Successfully Added
+(python27) bash-3.2$ python add_s3account.py -h
+usage: add_s3account.py [-h] [-s HOST] [-p port] [-u USERNAME] [-pwd PASSWORD]
+                        [--use-tls] [--account-name ACCOUNT_NAME]
+                        [-akey AWS_ACCESS_KEY] [-skey AWS_SECRET_KEY]
 
+```
+
+## Schedule S3 replication
+
+```
+(python27) bash-3.2$ python create_s3_replication_schedule.py -s 34.226.244.149 --cluster-name sameer-testspot -sp /tmp -tp s3a://bucket/target/path/
+Schedule created with Schdule ID: 6
+
+(python27) bash-3.2$ python create_s3_replication_schedule.py -h
+usage: create_s3_replication_schedule.py [-h] [-s HOST] [-p port]
+                                         [-u USERNAME] [-pwd PASSWORD]
+                                         [--use-tls]
+                                         [--account_name ACCOUNT_NAME]
+                                         [-sp SOURCE PATH]
+                                         [-tp DESTINATION PATH]
+                                         [--cluster-name Source Cluster Name]
+
+```
 
 ### Issues 
 
