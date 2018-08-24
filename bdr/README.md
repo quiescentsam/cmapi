@@ -1,7 +1,7 @@
 #BDR automation
 
 ###To Do
-* add S3 connector
+* add S3 connector - Done
 * Update add replication schdule to accept S3 dest
 
 ##ADD Peer

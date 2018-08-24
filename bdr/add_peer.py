@@ -13,7 +13,7 @@ def parse_args():
     @rtype:  namespace
     @return: The parsed arguments.
     """
-    parser = argparse.ArgumentParser(description="Adding Source cluster as 'peer' in Destination Cloudera Manager ",
+    parser = argparse.ArgumentParser(description="Adding Cloud Account to Cluster - requires cloud Access and Secret Key ",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('-s', '--server', metavar='HOST', type=str, help="The Cloudera Manager host")
     parser.add_argument('-p', '--port', metavar='port', type=int, default=7180, help="Cloudera Manager's port.")
@@ -33,10 +33,9 @@ def parse_args():
 
 
 def print_usage_message():
-    print ("Usage: add_peer.py [-h] [-s HOST] [-p port] [-u USERNAME] [-pwd PASSWORD] \
-                                 [--use-tls] [--source_cm_url Source Cloudera Manager URL] \
-                                 [--source-user Source Cloudera Manager Username] \
-                                 [--source-password SOURCE_CM_PWD] [--peer-name PEER_NAME]")
+    print ("usage: add_s3account.py [-h] [-s HOST] [-p port] [-u USERNAME] [-pwd PASSWORD] \
+                                [--use-tls] [--account-name ACCOUNT_NAME] \
+                                [-akey AWS_ACCESS_KEY] [-skey AWS_SECRET_KEY]")
 
 
 
