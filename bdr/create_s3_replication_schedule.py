@@ -29,12 +29,12 @@ def parse_args():
 
 def print_usage_message():
     print ("usage: create_s3_replication_schedule.py [-h] [-s HOST] [-p port] \
-    [-u USERNAME] [-pwd PASSWORD]
-        [--use-tls]
-        [--account_name ACCOUNT_NAME]
-        [-sp SOURCE PATH]
-        [-tp DESTINATION PATH]
-        [--cluster-name Source Cluster Name]")
+                   [-u USERNAME] [-pwd PASSWORD] \
+                   [--use-tls] \
+                   [--account_name ACCOUNT_NAME] \
+                   [-sp SOURCE PATH] \
+                   [-tp DESTINATION PATH] \
+                   [--cluster-name Source Cluster Name]")
 
 
 
