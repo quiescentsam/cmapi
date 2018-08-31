@@ -1,9 +1,10 @@
 #!/usr/bin/env python
-"""This module does blah blah."""
+"""This script creates S3 replication schedule."""
 
 from cm_api.api_client import ApiResource
 from cm_api.endpoints.types import *
-import argparse, sys
+import argparse
+import sys
 
 def parse_args():
     """
