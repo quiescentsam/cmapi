@@ -27,7 +27,7 @@ def parse_args():
                         help="Whether to use TLS to connect to Cloudera Manager.")
     parser.add_argument("--account_name", metavar='ACCOUNT_NAME',
                         type=str, default='cloudAccount1',
-                        help="ALias Name to be created of the Source cluster" )
+                        help="ALias Name to be created of the Source cluster")
     parser.add_argument('-sp', '--source-path', metavar='SOURCE PATH')
     parser.add_argument('-tp', '--target-path', metavar='DESTINATION PATH')
     parser.add_argument('--cluster-name', metavar='Source Cluster Name')

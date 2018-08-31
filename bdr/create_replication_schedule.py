@@ -10,7 +10,7 @@ def parse_args():
     @rtype:  namespace
     @return: The parsed arguments.
     """
-    parser = argparse.ArgumentParser(description="Adding Source cluster as 'peer' in Destination Cloudera Manager ",
+    parser = argparse.ArgumentParser(description="Creating the REPLICATION Schedule",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('-s', '--server', metavar='HOST', type=str, help="The Cloudera Manager host")
     parser.add_argument('-p', '--port', metavar='port', type=int, default=7180, help="Cloudera Manager's port.")
