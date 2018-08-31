@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+"""This module does blah blah."""
 
 from cm_api.api_client import ApiResource
 from cm_api.endpoints.types import *
@@ -86,8 +87,10 @@ def main():
     hdfs_cloud_args.mapreduceServiceName = YARN_SERVICE
 
     # creating a schedule with daily frequency
-    start = datetime.datetime.now() # The time at which the scheduled activity is triggered for the first time.
-    end = start + datetime.timedelta(days=365) # The time after which the scheduled activity will no longer be triggered.
+    start = datetime.datetime.now()
+    # The time at which the scheduled activity is triggered for the first time.
+    end = start + datetime.timedelta(days=365)
+    # The time after which the scheduled activity will no longer be triggered.
 
     schedule = hdfs.create_replication_schedule(start, end, "DAY", 1, True, hdfs_cloud_args)
 
@@ -113,4 +116,3 @@ def main():
 
 if __name__ == '__main__':
     sys.exit(main())
-
