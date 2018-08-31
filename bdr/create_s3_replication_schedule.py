@@ -11,16 +11,22 @@ def parse_args():
     @return: The parsed arguments.
     """
     parser = argparse.ArgumentParser(description="Adding Source "
-                                                 "cluster as 'peer' in Destination Cloudera Manager ",
+                                     "cluster as 'peer' in Destination Cloudera Manager ",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('-s', '--server', metavar='HOST', type=str, help="The Cloudera Manager host")
-    parser.add_argument('-p', '--port', metavar='port', type=int, default=7180, help="Cloudera Manager's port.")
-    parser.add_argument('-u', '--username', metavar='USERNAME', type=str, default='admin',
+    parser.add_argument('-s', '--server', metavar='HOST', type=str,
+                        help="The Cloudera Manager host")
+    parser.add_argument('-p', '--port', metavar='port', type=int,
+                        default=7180, help="Cloudera Manager's port.")
+    parser.add_argument('-u', '--username', metavar='USERNAME',
+                        type=str, default='admin',
                         help="The username to log into Cloudera Manager with.")
-    parser.add_argument('-pwd', '--password', metavar='PASSWORD', type=str, default='admin',
+    parser.add_argument('-pwd', '--password', metavar='PASSWORD',
+                        type=str, default='admin',
                         help="The password to log into Cloudera Manager with.")
-    parser.add_argument('--use-tls', action='store_true', help="Whether to use TLS to connect to Cloudera Manager.")
-    parser.add_argument("--account_name" , metavar='ACCOUNT_NAME', type=str, default='cloudAccount1',
+    parser.add_argument('--use-tls', action='store_true',
+                        help="Whether to use TLS to connect to Cloudera Manager.")
+    parser.add_argument("--account_name", metavar='ACCOUNT_NAME',
+                        type=str, default='cloudAccount1',
                         help="ALias Name to be created of the Source cluster" )
     parser.add_argument('-sp', '--source-path', metavar='SOURCE PATH')
     parser.add_argument('-tp', '--target-path', metavar='DESTINATION PATH')
