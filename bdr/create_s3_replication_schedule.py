@@ -35,15 +35,13 @@ def parse_args():
     return parser.parse_args()
 
 def print_usage_message():
-    print ("usage: create_s3_replication_schedule.py [-h] [-s HOST] [-p port] \
+    print "usage: create_s3_replication_schedule.py [-h] [-s HOST] [-p port] \
                    [-u USERNAME] [-pwd PASSWORD] \
                    [--use-tls] \
                    [--account_name ACCOUNT_NAME] \
                    [-sp SOURCE PATH] \
                    [-tp DESTINATION PATH] \
-                   [--cluster-name Source Cluster Name]")
-
-
+                   [--cluster-name Source Cluster Name]"
 
 def get_service_name(SERVICE_TYPE, cluster_api, CLUSTER_NAME):
     """
@@ -69,18 +67,19 @@ def main():
         print_usage_message()
         quit(1)
 
-    api = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
+    api = ApiResource(settings.server, settings.port, settings.username,
+                      settings.password, settings.use_tls, 14)
 
     YARN_SERVICE = get_service_name('YARN', api, settings.cluster_name)
-    HDFS_NAME=get_service_name('HDFS',api, settings.cluster_name)
+    HDFS_NAME = get_service_name('HDFS', api, settings.cluster_name)
 
     hdfs = api.get_cluster(settings.cluster_name).get_service(HDFS_NAME)
 
     hdfs_cloud_args = ApiHdfsCloudReplicationArguments(None)
     hdfs_cloud_args.sourceService = ApiServiceRef(None,
-                                              peerName=None,
-                                              clusterName=settings.cluster_name,
-                                              serviceName=HDFS_NAME)
+                                                  peerName=None,
+                                                  clusterName=settings.cluster_name,
+                                                  serviceName=HDFS_NAME)
     hdfs_cloud_args.sourcePath = settings.source_path
     hdfs_cloud_args.destinationPath = settings.target_path
     hdfs_cloud_args.destinationAccount = settings.account_name
