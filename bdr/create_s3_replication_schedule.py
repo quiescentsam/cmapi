@@ -37,6 +37,7 @@ def parse_args():
     return parser.parse_args()
 
 def print_usage_message():
+    ''' Print the usage of the script '''
     print "usage: create_s3_replication_schedule.py [-h] [-s HOST] [-p port] \
                    [-u USERNAME] [-pwd PASSWORD] \
                    [--use-tls] \
