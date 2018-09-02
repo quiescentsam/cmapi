@@ -39,6 +39,7 @@ def parse_args():
 
 
 def print_usage_message():
+    ''' Print usage instructions'''
     print "usage: add_s3account.py [-h] [-s HOST] [-p port] [-u USERNAME] [-pwd PASSWORD] \
                                 [--use-tls] [--account-name ACCOUNT_NAME] \
                                 [-akey AWS_ACCESS_KEY] [-skey AWS_SECRET_KEY]"
@@ -61,15 +62,18 @@ def main():
                              settings.password,
                              settings.use_tls,
                              14)
-    cm = api_target.get_cloudera_manager()
+    cloudera_manager = api_target.get_cloudera_manager()
     try:
-        cm.create_peer(settings.peer_name, settings.source_cm_url, settings.source_user, settings.source_password)
+        cloudera_manager.create_peer(settings.peer_name,
+                       settings.source_cm_url,
+                       settings.source_user,
+                       settings.source_password)
         print "Peer Successfully Added"
-    except ApiException as e:
-        if 'already exists' in str(e):
+    except ApiException as error:
+        if 'already exists' in str(error):
             print 'Peer Already exists'
         else:
-            raise e
+            raise error
 
     return 0
 
