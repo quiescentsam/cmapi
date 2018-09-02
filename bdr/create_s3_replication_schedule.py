@@ -46,15 +46,15 @@ def print_usage_message():
                    [-tp DESTINATION PATH] \
                    [--cluster-name Source Cluster Name]"
 
-def get_service_name(SERVICE_TYPE, cluster_api, CLUSTER_NAME):
+def get_service_name(service_type, cluster_api, cluster_name):
     """
     Inputs: Common name of the Service,cluster APiResource and cluster name
     :return: Service name , returns "None" if service is not present
     """
-    cluster = cluster_api.get_cluster(CLUSTER_NAME)
+    cluster = cluster_api.get_cluster(cluster_name)
     services = cluster.get_all_services()
     for service_name in services:
-        if SERVICE_TYPE in service_name.name:
+        if service_type in service_name.name:
             return service_name.name
 
 
