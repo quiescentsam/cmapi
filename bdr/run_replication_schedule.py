@@ -99,7 +99,7 @@ def main():
         print "numFilesSkipped:" + str(hdfsresult.numFilesSkipped)
         print "numBytesSkipped:" + str(hdfsresult.numBytesSkipped)
 
-     return 0
+    return 0
 
 
 if __name__ == '__main__':
