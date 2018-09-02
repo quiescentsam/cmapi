@@ -98,23 +98,25 @@ def main():
                              settings.s_use_tls,
                              14)
 
-    SOURCE_HDFS_NAME = get_service_name('HDFS',api_source, settings.source_cluster_name)
-    TARGET_YARN_SERVICE = get_service_name('YARN', api_target, settings.target_cluster_name)
-    TARGET_HDFS_NAME=get_service_name('HDFS',api_target, settings.target_cluster_name)
+    source_hdfs_name = get_service_name('HDFS',api_source, settings.source_cluster_name)
+    target_yarn_service = get_service_name('YARN', api_target, settings.target_cluster_name)
+    target_hdfs_name = get_service_name('HDFS', api_target, settings.target_cluster_name)
 
-    hdfs = api_target.get_cluster(settings.target_cluster_name).get_service(TARGET_HDFS_NAME)
+    hdfs = api_target.get_cluster(settings.target_cluster_name).get_service(target_hdfs_name)
 
     hdfs_args = ApiHdfsReplicationArguments(None)
     hdfs_args.sourceService = ApiServiceRef(None, peerName=settings.peer_name,
                                             clusterName=settings.source_cluster_name,
-                                            serviceName=SOURCE_HDFS_NAME)
+                                            serviceName=source_hdfs_name)
     hdfs_args.sourcePath = settings.source_path
     hdfs_args.destinationPath = settings.target_path
-    hdfs_args.mapreduceServiceName = TARGET_YARN_SERVICE
+    hdfs_args.mapreduceServiceName = target_yarn_service
 
     # creating a schedule with daily frequency
-    start = datetime.datetime.now() # The time at which the scheduled activity is triggered for the first time.
-    end = start + datetime.timedelta(days=365) # The time after which the scheduled activity will no longer be triggered.
+    start = datetime.datetime.now()
+    # The time at which the scheduled activity is triggered for the first time.
+    end = start + datetime.timedelta(days=365)
+    # The time after which the scheduled activity will no longer be triggered.
 
     schedule = hdfs.create_replication_schedule(start, end, "DAY", 1, True, hdfs_args)
 
