@@ -70,6 +70,7 @@ def get_service_name(service_type, cluster_api, cluster_name):
     for service_name in services:
         if service_type in service_name.name:
             return service_name.name
+    return None
 
 
 

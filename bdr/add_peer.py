@@ -34,9 +34,9 @@ def parse_args():
 
 
 def print_usage_message():
-    print ("usage: add_s3account.py [-h] [-s HOST] [-p port] [-u USERNAME] [-pwd PASSWORD] \
+    print "usage: add_s3account.py [-h] [-s HOST] [-p port] [-u USERNAME] [-pwd PASSWORD] \
                                 [--use-tls] [--account-name ACCOUNT_NAME] \
-                                [-akey AWS_ACCESS_KEY] [-skey AWS_SECRET_KEY]")
+                                [-akey AWS_ACCESS_KEY] [-skey AWS_SECRET_KEY]"
 
 
 def main():

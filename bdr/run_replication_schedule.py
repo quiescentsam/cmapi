@@ -83,8 +83,12 @@ def main():
     if len(sys.argv) == 1 or len(sys.argv) > 17:
         print_usage_message()
         quit(1)
-        
-    api = ApiResource(settings.server, settings.port, settings.username, settings.password, settings.use_tls, 14)
+    api = ApiResource(settings.server,
+                      settings.port,
+                      settings.username,
+                      settings.password,
+                      settings.use_tls,
+                      14)
     target_hdfs_name = get_service_name('HDFS', api, settings.target_cluster_name)
     hdfs = api.get_cluster(settings.target_cluster_name).get_service(target_hdfs_name)
     cmd = hdfs.trigger_replication_schedule(settings.schedule_id)

@@ -34,10 +34,10 @@ def parse_args():
 
 
 def print_usage_message():
-    print ("Usage: add_peer.py [-h] [-s HOST] [-p port] [-u USERNAME] [-pwd PASSWORD] \
+    print "Usage: add_peer.py [-h] [-s HOST] [-p port] [-u USERNAME] [-pwd PASSWORD] \
                                  [--use-tls] [--source_cm_url Source Cloudera Manager URL] \
                                  [--source-user Source Cloudera Manager Username] \
-                                 [--source-password SOURCE_CM_PWD] [--peer-name PEER_NAME]")
+                                 [--source-password SOURCE_CM_PWD] [--peer-name PEER_NAME]"
 
 
 def main():
