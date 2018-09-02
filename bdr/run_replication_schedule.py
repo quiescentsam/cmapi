@@ -34,17 +34,20 @@ def parse_args():
     @rtype:  namespace
     @return: The parsed arguments.
     """
-    parser = argparse.ArgumentParser(description="Adding Source cluster as 'peer' in Destination Cloudera Manager ",
+    parser = argparse.ArgumentParser(description="Adding Source cluster as 'peer' "
+                                                 "in Destination Cloudera Manager ",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('-s', '--server', metavar='HOST', type=str, help="The Cloudera Manager host")
-    parser.add_argument('-p', '--port', metavar='port', type=int, default=7180, help="Cloudera Manager's port.")
+    parser.add_argument('-s', '--server', metavar='HOST', type=str,
+                        help="The Cloudera Manager host")
+    parser.add_argument('-p', '--port', metavar='port', type=int, default=7180,
+                        help="Cloudera Manager's port.")
     parser.add_argument('-u', '--username', metavar='USERNAME', type=str, default='admin',
                         help="The username to log into Cloudera Manager with.")
     parser.add_argument('-pwd', '--password', metavar='PASSWORD', type=str, default='admin',
                         help="The password to log into Cloudera Manager with.")
     parser.add_argument('--use-tls', action='store_true', help="Whether to use TLS to connect to Cloudera Manager.")
     parser.add_argument('-id', '--schedule-id', metavar='Schedule ID', type=int)
-    parser.add_argument('-tc','--target-cluster-name', metavar='Destination Cluster Name')
+    parser.add_argument('-tc', '--target-cluster-name', metavar='Destination Cluster Name')
     return parser.parse_args()
 
 
@@ -78,8 +81,8 @@ def main():
         print_usage_message()
         quit(1)
 
-    api = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
-    TARGET_HDFS_NAME = get_service_name('HDFS',api, settings.target_cluster_name)
+    api = ApiResource(settings.server, settings.port, settings.username, settings.password, settings.use_tls, 14)
+    TARGET_HDFS_NAME = get_service_name('HDFS', api, settings.target_cluster_name)
     hdfs = api.get_cluster(settings.target_cluster_name).get_service(TARGET_HDFS_NAME)
     cmd = hdfs.trigger_replication_schedule(settings.schedule_id)
     cmd.wait()

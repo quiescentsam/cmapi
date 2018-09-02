@@ -13,15 +13,19 @@ def parse_args():
     @rtype:  namespace
     @return: The parsed arguments.
     """
-    parser = argparse.ArgumentParser(description="Adding Cloud Account to Cluster - requires cloud Access and Secret Key ",
+    parser = argparse.ArgumentParser(description="Adding Cloud Account to Cluster "
+                                                 "- requires cloud Access and Secret Key ",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('-s', '--server', metavar='HOST', type=str, help="The Cloudera Manager host")
-    parser.add_argument('-p', '--port', metavar='port', type=int, default=7180, help="Cloudera Manager's port.")
+    parser.add_argument('-s', '--server', metavar='HOST', type=str,
+                        help="The Cloudera Manager host")
+    parser.add_argument('-p', '--port', metavar='port', type=int, default=7180,
+                        help="Cloudera Manager's port.")
     parser.add_argument('-u', '--username', metavar='USERNAME', type=str, default='admin',
                         help="The username to log into Cloudera Manager with.")
     parser.add_argument('-pwd', '--password', metavar='PASSWORD', type=str, default='admin',
                         help="The password to log into Cloudera Manager with.")
-    parser.add_argument('--use-tls', action='store_true', help="Whether to use TLS to connect to Cloudera Manager.")
+    parser.add_argument('--use-tls', action='store_true',
+                        help="Whether to use TLS to connect to Cloudera Manager.")
     parser.add_argument("--account-name" , metavar='ACCOUNT_NAME', type=str, default='cloudAccount1',
                         help="ALias Name to be created of the Source cluster" )
     parser.add_argument('-akey','--aws-access-key', metavar='AWS_ACCESS_KEY', type=str)
