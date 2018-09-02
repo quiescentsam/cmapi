@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 
-# *******************************************************************************************
+"""
+*******************************************************************************************
 #  run_replication_schedule.py
 #
 #  Executes the Replication Schedule
@@ -21,6 +22,7 @@
 #    This script assumes there is only a single HDFS service per cluster
 #
 ## *******************************************************************************************
+"""
 
 import argparse
 import sys
@@ -45,17 +47,18 @@ def parse_args():
                         help="The username to log into Cloudera Manager with.")
     parser.add_argument('-pwd', '--password', metavar='PASSWORD', type=str, default='admin',
                         help="The password to log into Cloudera Manager with.")
-    parser.add_argument('--use-tls', action='store_true', help="Whether to use TLS to connect to Cloudera Manager.")
+    parser.add_argument('--use-tls', action='store_true', help="Whether to use TLS to "
+                                                               "connect to Cloudera Manager.")
     parser.add_argument('-id', '--schedule-id', metavar='Schedule ID', type=int)
     parser.add_argument('-tc', '--target-cluster-name', metavar='Destination Cluster Name')
     return parser.parse_args()
 
 
 def print_usage_message():
-    print ("usage: run_replication_schedule.py [-h] [-s HOST] [-p port] [-u USERNAME] \
+    print "usage: run_replication_schedule.py [-h] [-s HOST] [-p port] [-u USERNAME] \
           [-pwd PASSWORD] [--use-tls] \
           [-id Schedule ID] \
-          [-tc Destination Cluster Name]")
+          [-tc Destination Cluster Name]"
 
 
 def get_service_name(SERVICE_TYPE, cluster_api, CLUSTER_NAME):
@@ -80,10 +83,10 @@ def main():
     if len(sys.argv) == 1 or len(sys.argv) > 17:
         print_usage_message()
         quit(1)
-
+        
     api = ApiResource(settings.server, settings.port, settings.username, settings.password, settings.use_tls, 14)
-    TARGET_HDFS_NAME = get_service_name('HDFS', api, settings.target_cluster_name)
-    hdfs = api.get_cluster(settings.target_cluster_name).get_service(TARGET_HDFS_NAME)
+    target_hdfs_name = get_service_name('HDFS', api, settings.target_cluster_name)
+    hdfs = api.get_cluster(settings.target_cluster_name).get_service(target_hdfs_name)
     cmd = hdfs.trigger_replication_schedule(settings.schedule_id)
     cmd.wait()
     result = hdfs.get_replication_schedule(settings.schedule_id).history[0]

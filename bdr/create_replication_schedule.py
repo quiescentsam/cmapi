@@ -85,8 +85,18 @@ def main():
         print_usage_message()
         quit(1)
 
-    api_target = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
-    api_source = ApiResource(settings.source_server, settings.source_port, settings.source_user,settings.source_password, settings.s_use_tls, 14)
+    api_target = ApiResource(settings.server,
+                             settings.port,
+                             settings.username,
+                             settings.password,
+                             settings.use_tls,
+                             14)
+    api_source = ApiResource(settings.source_server,
+                             settings.source_port,
+                             settings.source_user,
+                             settings.source_password,
+                             settings.s_use_tls,
+                             14)
 
     SOURCE_HDFS_NAME = get_service_name('HDFS',api_source, settings.source_cluster_name)
     TARGET_YARN_SERVICE = get_service_name('YARN', api_target, settings.target_cluster_name)
@@ -95,7 +105,8 @@ def main():
     hdfs = api_target.get_cluster(settings.target_cluster_name).get_service(TARGET_HDFS_NAME)
 
     hdfs_args = ApiHdfsReplicationArguments(None)
-    hdfs_args.sourceService = ApiServiceRef(None, peerName=settings.peer_name, clusterName=settings.source_cluster_name,
+    hdfs_args.sourceService = ApiServiceRef(None, peerName=settings.peer_name,
+                                            clusterName=settings.source_cluster_name,
                                             serviceName=SOURCE_HDFS_NAME)
     hdfs_args.sourcePath = settings.source_path
     hdfs_args.destinationPath = settings.target_path
