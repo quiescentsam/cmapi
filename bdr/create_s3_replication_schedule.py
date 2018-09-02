@@ -14,7 +14,7 @@ def parse_args():
     @return: The parsed arguments.
     """
     parser = argparse.ArgumentParser(description="Adding Source "
-                                     "cluster as 'peer' in Destination Cloudera Manager ",
+                                                 "cluster as 'peer' in Destination Cloudera Manager ",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('-s', '--server', metavar='HOST', type=str,
                         help="The Cloudera Manager host")
@@ -37,6 +37,7 @@ def parse_args():
 
     return parser.parse_args()
 
+
 def print_usage_message():
     ''' Print the usage of the script '''
     print "usage: create_s3_replication_schedule.py [-h] [-s HOST] [-p port] \
@@ -46,6 +47,7 @@ def print_usage_message():
                    [-sp SOURCE PATH] \
                    [-tp DESTINATION PATH] \
                    [--cluster-name Source Cluster Name]"
+
 
 def get_service_name(service_type, cluster_api, cluster_name):
     """
@@ -98,7 +100,7 @@ def main():
     schedule = hdfs.create_replication_schedule(start, end, "DAY", 1, True, hdfs_cloud_args)
 
     ## Updating the Schedule's properties
-    #schedule.hdfsArguments.removeMissingFiles = False
+    # schedule.hdfsArguments.removeMissingFiles = False
     schedule.alertOnFail = True
     schedule = hdfs.update_replication_schedule(schedule.id, schedule)
 
@@ -114,8 +116,8 @@ def main():
     # print schedule.hdfsArguments.schedulerPoolName
     # print type(schedule)
 
-
     return 0
+
 
 if __name__ == '__main__':
     sys.exit(main())

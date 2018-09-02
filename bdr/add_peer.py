@@ -22,13 +22,14 @@ def parse_args():
     parser.add_argument('-pwd', '--password', metavar='PASSWORD', type=str, default='admin',
                         help="The password to log into Cloudera Manager with.")
     parser.add_argument('--use-tls', action='store_true', help="Whether to use TLS to connect to Cloudera Manager.")
-    parser.add_argument('--source_cm_url', metavar='Source Cloudera Manager URL', type=str, help="Full CM URL of the source cluster ie. https://hostname:7183/")
+    parser.add_argument('--source_cm_url', metavar='Source Cloudera Manager URL', type=str,
+                        help="Full CM URL of the source cluster ie. https://hostname:7183/")
     parser.add_argument("--source-user", metavar='Source Cloudera Manager Username', type=str, default='admin',
-                        help="The username to log into Source Cloudera Manager with." )
+                        help="The username to log into Source Cloudera Manager with.")
     parser.add_argument("--source-password", metavar='SOURCE_CM_PWD', type=str, default='admin',
-                        help="The password to log into Source Cloudera Manager with." )
-    parser.add_argument("--peer-name" , metavar='PEER_NAME', type=str, default='peer1',
-                        help="ALias Name to be created of the Source cluster" )
+                        help="The password to log into Source Cloudera Manager with.")
+    parser.add_argument("--peer-name", metavar='PEER_NAME', type=str, default='peer1',
+                        help="ALias Name to be created of the Source cluster")
     return parser.parse_args()
 
 
@@ -36,7 +37,6 @@ def print_usage_message():
     print ("usage: add_s3account.py [-h] [-s HOST] [-p port] [-u USERNAME] [-pwd PASSWORD] \
                                 [--use-tls] [--account-name ACCOUNT_NAME] \
                                 [-akey AWS_ACCESS_KEY] [-skey AWS_SECRET_KEY]")
-
 
 
 def main():
@@ -50,7 +50,7 @@ def main():
         print_usage_message()
         quit(1)
 
-    api_target = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
+    api_target = ApiResource(settings.server, settings.port, settings.username, settings.password, settings.use_tls, 14)
     cm = api_target.get_cloudera_manager()
     try:
         cm.create_peer(settings.peer_name, settings.source_cm_url, settings.source_user, settings.source_password)
@@ -61,11 +61,8 @@ def main():
         else:
             raise e
 
-
     return 0
+
 
 if __name__ == '__main__':
     sys.exit(main())
-
-
-

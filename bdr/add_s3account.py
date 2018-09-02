@@ -26,10 +26,10 @@ def parse_args():
                         help="The password to log into Cloudera Manager with.")
     parser.add_argument('--use-tls', action='store_true',
                         help="Whether to use TLS to connect to Cloudera Manager.")
-    parser.add_argument("--account-name" , metavar='ACCOUNT_NAME', type=str, default='cloudAccount1',
-                        help="ALias Name to be created of the Source cluster" )
-    parser.add_argument('-akey','--aws-access-key', metavar='AWS_ACCESS_KEY', type=str)
-    parser.add_argument('-skey','--aws-secret-key', metavar='AWS_SECRET_KEY', type=str)
+    parser.add_argument("--account-name", metavar='ACCOUNT_NAME', type=str, default='cloudAccount1',
+                        help="ALias Name to be created of the Source cluster")
+    parser.add_argument('-akey', '--aws-access-key', metavar='AWS_ACCESS_KEY', type=str)
+    parser.add_argument('-skey', '--aws-secret-key', metavar='AWS_SECRET_KEY', type=str)
     return parser.parse_args()
 
 
@@ -51,12 +51,13 @@ def main():
         print_usage_message()
         quit(1)
 
-    api_target = ApiResource(settings.server, settings.port, settings.username,settings.password, settings.use_tls, 14)
+    api_target = ApiResource(settings.server, settings.port, settings.username, settings.password, settings.use_tls, 14)
     TYPE_NAME = 'AWS_ACCESS_KEY_AUTH'
-    account_configs ={'aws_access_key': settings.aws_access_key,
-                  'aws_secret_key': settings.aws_secret_key}
+    account_configs = {'aws_access_key': settings.aws_access_key,
+                       'aws_secret_key': settings.aws_secret_key}
     try:
-        api_target.create_external_account(settings.account_name,settings.account_name,TYPE_NAME,account_configs=account_configs)
+        api_target.create_external_account(settings.account_name, settings.account_name, TYPE_NAME,
+                                           account_configs=account_configs)
         print "S3 Account Successfully Added"
     except ApiException as e:
         if 'already exists' in str(e):
@@ -64,8 +65,8 @@ def main():
         else:
             raise e
 
-
     return 0
+
 
 if __name__ == '__main__':
     sys.exit(main())
