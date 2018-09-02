@@ -54,8 +54,8 @@ def main():
 
     api_target = ApiResource(settings.server,
                              settings.port,
-                             settings.username, 
-                             settings.password, 
+                             settings.username,
+                             settings.password,
                              settings.use_tls,
                              14)
     type_name = 'AWS_ACCESS_KEY_AUTH'

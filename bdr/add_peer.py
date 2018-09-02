@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+"""This script Adds Peer."""
 import argparse
 import sys
 
@@ -28,7 +28,8 @@ def parse_args():
                         help="Whether to use TLS to connect to Cloudera Manager.")
     parser.add_argument('--source_cm_url', metavar='Source Cloudera Manager URL', type=str,
                         help="Full CM URL of the source cluster ie. https://hostname:7183/")
-    parser.add_argument("--source-user", metavar='Source Cloudera Manager Username', type=str, default='admin',
+    parser.add_argument("--source-user", metavar='Source Cloudera Manager Username',
+                        type=str, default='admin',
                         help="The username to log into Source Cloudera Manager with.")
     parser.add_argument("--source-password", metavar='SOURCE_CM_PWD', type=str, default='admin',
                         help="The password to log into Source Cloudera Manager with.")
@@ -54,7 +55,12 @@ def main():
         print_usage_message()
         quit(1)
 
-    api_target = ApiResource(settings.server, settings.port, settings.username, settings.password, settings.use_tls, 14)
+    api_target = ApiResource(settings.server,
+                             settings.port,
+                             settings.username,
+                             settings.password,
+                             settings.use_tls,
+                             14)
     cm = api_target.get_cloudera_manager()
     try:
         cm.create_peer(settings.peer_name, settings.source_cm_url, settings.source_user, settings.source_password)
