@@ -37,7 +37,7 @@ def parse_args():
                         help="The password to log into Source Cloudera Manager with.")
     parser.add_argument('--s-use-tls', action='store_true',
                         help="Whether to use TLS to connect to Cloudera Manager.")
-    parser.add_argument("--peer-name" , metavar='PEER_NAME',
+    parser.add_argument("--peer-name", metavar='PEER_NAME',
                         type=str, default='peer1',
                         help="ALias Name to be created of the Source cluster")
     parser.add_argument('-sp', '--source-path', metavar='SOURCE PATH')
@@ -48,7 +48,7 @@ def parse_args():
     return parser.parse_args()
 
 def print_usage_message():
-    print ("usage: create_replication_schedule.py [-h] [-s HOST] [-p port] [-u USERNAME] \
+    print "usage: create_replication_schedule.py [-h] [-s HOST] [-p port] [-u USERNAME] \
           [-pwd PASSWORD] [--use-tls] \
           [--source-server Source Cloudera Manager URL] \
           [--source-port Source port] \
@@ -57,7 +57,7 @@ def print_usage_message():
           [--s-use-tls] [--peer-name PEER_NAME] \
           [-sp SOURCE PATH] [-tp DESTINATION PATH] \
           [--source-cluster-name Source Cluster Name] \
-          [--target-cluster-name Destination Cluster Name]")
+          [--target-cluster-name Destination Cluster Name]"
 
 
 
