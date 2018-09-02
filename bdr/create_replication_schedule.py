@@ -47,6 +47,8 @@ def parse_args():
     return parser.parse_args()
 
 def print_usage_message():
+    ''' Print usage instructions
+    '''
     print "usage: create_replication_schedule.py [-h] [-s HOST] [-p port] [-u USERNAME] \
           [-pwd PASSWORD] [--use-tls] \
           [--source-server Source Cloudera Manager URL] \
