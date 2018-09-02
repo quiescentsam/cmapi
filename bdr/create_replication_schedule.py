@@ -1,11 +1,10 @@
 #!/usr/bin/env python
+"""This script creates HDFS replication schedule."""
 
 import argparse
 import sys
-
 from cm_api.api_client import ApiResource
 from cm_api.endpoints.types import *
-
 
 def parse_args():
     """
@@ -98,7 +97,7 @@ def main():
                              settings.s_use_tls,
                              14)
 
-    source_hdfs_name = get_service_name('HDFS',api_source, settings.source_cluster_name)
+    source_hdfs_name = get_service_name('HDFS', api_source, settings.source_cluster_name)
     target_yarn_service = get_service_name('YARN', api_target, settings.target_cluster_name)
     target_hdfs_name = get_service_name('HDFS', api_target, settings.target_cluster_name)
 
@@ -142,4 +141,3 @@ def main():
 
 if __name__ == '__main__':
     sys.exit(main())
-
