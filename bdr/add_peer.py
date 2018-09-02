@@ -13,15 +13,19 @@ def parse_args():
     @rtype:  namespace
     @return: The parsed arguments.
     """
-    parser = argparse.ArgumentParser(description="Adding Source cluster as 'peer' in Destination Cloudera Manager ",
+    parser = argparse.ArgumentParser(description="Adding Source cluster as 'peer' "
+                                                 "in Destination Cloudera Manager ",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('-s', '--server', metavar='HOST', type=str, help="The Cloudera Manager host")
-    parser.add_argument('-p', '--port', metavar='port', type=int, default=7180, help="Cloudera Manager's port.")
+    parser.add_argument('-s', '--server', metavar='HOST', type=str,
+                        help="The Cloudera Manager host")
+    parser.add_argument('-p', '--port', metavar='port', type=int, default=7180,
+                        help="Cloudera Manager's port.")
     parser.add_argument('-u', '--username', metavar='USERNAME', type=str, default='admin',
                         help="The username to log into Cloudera Manager with.")
     parser.add_argument('-pwd', '--password', metavar='PASSWORD', type=str, default='admin',
                         help="The password to log into Cloudera Manager with.")
-    parser.add_argument('--use-tls', action='store_true', help="Whether to use TLS to connect to Cloudera Manager.")
+    parser.add_argument('--use-tls', action='store_true',
+                        help="Whether to use TLS to connect to Cloudera Manager.")
     parser.add_argument('--source_cm_url', metavar='Source Cloudera Manager URL', type=str,
                         help="Full CM URL of the source cluster ie. https://hostname:7183/")
     parser.add_argument("--source-user", metavar='Source Cloudera Manager Username', type=str, default='admin',

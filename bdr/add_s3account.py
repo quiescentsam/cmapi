@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+"""This script Adds S3 account"""
 import argparse
 import sys
 
@@ -34,6 +34,7 @@ def parse_args():
 
 
 def print_usage_message():
+    ''' Print usage instructions'''
     print "Usage: add_peer.py [-h] [-s HOST] [-p port] [-u USERNAME] [-pwd PASSWORD] \
                                  [--use-tls] [--source_cm_url Source Cloudera Manager URL] \
                                  [--source-user Source Cloudera Manager Username] \
@@ -51,19 +52,24 @@ def main():
         print_usage_message()
         quit(1)
 
-    api_target = ApiResource(settings.server, settings.port, settings.username, settings.password, settings.use_tls, 14)
-    TYPE_NAME = 'AWS_ACCESS_KEY_AUTH'
+    api_target = ApiResource(settings.server,
+                             settings.port,
+                             settings.username, 
+                             settings.password, 
+                             settings.use_tls,
+                             14)
+    type_name = 'AWS_ACCESS_KEY_AUTH'
     account_configs = {'aws_access_key': settings.aws_access_key,
                        'aws_secret_key': settings.aws_secret_key}
     try:
-        api_target.create_external_account(settings.account_name, settings.account_name, TYPE_NAME,
+        api_target.create_external_account(settings.account_name, settings.account_name, type_name,
                                            account_configs=account_configs)
         print "S3 Account Successfully Added"
-    except ApiException as e:
-        if 'already exists' in str(e):
+    except ApiException as error:
+        if 'already exists' in str(error):
             print 'Peer Already exists'
         else:
-            raise e
+            raise error
 
     return 0
 

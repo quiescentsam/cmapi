@@ -55,22 +55,24 @@ def parse_args():
 
 
 def print_usage_message():
+    ''' Print usage instructions'''
     print "usage: run_replication_schedule.py [-h] [-s HOST] [-p port] [-u USERNAME] \
           [-pwd PASSWORD] [--use-tls] \
           [-id Schedule ID] \
           [-tc Destination Cluster Name]"
 
 
-def get_service_name(SERVICE_TYPE, cluster_api, CLUSTER_NAME):
+def get_service_name(service_type, cluster_api, cluster_name):
     """
     Inputs: Common name of the Service,cluster APiResource and cluster name
     :return: Service name , returns "None" if service is not present
     """
-    cluster = cluster_api.get_cluster(CLUSTER_NAME)
+    cluster = cluster_api.get_cluster(cluster_name)
     services = cluster.get_all_services()
     for service_name in services:
-        if SERVICE_TYPE in service_name.name:
+        if service_type in service_name.name:
             return service_name.name
+    return None
 
 
 def main():
@@ -95,7 +97,7 @@ def main():
     cmd.wait()
     result = hdfs.get_replication_schedule(settings.schedule_id).history[0]
     hdfsresult = hdfs.get_replication_schedule(settings.schedule_id).history[0].hdfsResult
-    if result.success == False:
+    if result.success is False:
         print "######  Replication job failed  #####"
         print "Yarn Job ID :" + str(hdfsresult.jobId)
         print "Job Details URL:" + str(hdfsresult.jobDetailsUri)
