@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 """This script creates S3 replication schedule."""
 
-from cm_api.api_client import ApiResource
-from cm_api.endpoints.types import *
 import argparse
 import sys
+from cm_api.api_client import ApiResource
+from cm_api.endpoints.types import *
+
 
 def parse_args():
     """
