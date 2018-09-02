@@ -73,20 +73,20 @@ def main():
     api = ApiResource(settings.server, settings.port, settings.username,
                       settings.password, settings.use_tls, 14)
 
-    YARN_SERVICE = get_service_name('YARN', api, settings.cluster_name)
-    HDFS_NAME = get_service_name('HDFS', api, settings.cluster_name)
+    yarn_service = get_service_name('YARN', api, settings.cluster_name)
+    hdfs_name = get_service_name('HDFS', api, settings.cluster_name)
 
-    hdfs = api.get_cluster(settings.cluster_name).get_service(HDFS_NAME)
+    hdfs = api.get_cluster(settings.cluster_name).get_service(hdfs_name)
 
     hdfs_cloud_args = ApiHdfsCloudReplicationArguments(None)
     hdfs_cloud_args.sourceService = ApiServiceRef(None,
                                                   peerName=None,
                                                   clusterName=settings.cluster_name,
-                                                  serviceName=HDFS_NAME)
+                                                  serviceName=hdfs_name)
     hdfs_cloud_args.sourcePath = settings.source_path
     hdfs_cloud_args.destinationPath = settings.target_path
     hdfs_cloud_args.destinationAccount = settings.account_name
-    hdfs_cloud_args.mapreduceServiceName = YARN_SERVICE
+    hdfs_cloud_args.mapreduceServiceName = yarn_service
 
     # creating a schedule with daily frequency
     start = datetime.datetime.now()
