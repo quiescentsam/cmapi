@@ -65,9 +65,9 @@ def main():
     cloudera_manager = api_target.get_cloudera_manager()
     try:
         cloudera_manager.create_peer(settings.peer_name,
-                       settings.source_cm_url,
-                       settings.source_user,
-                       settings.source_password)
+                                     settings.source_cm_url,
+                                     settings.source_user,
+                                     settings.source_password)
         print "Peer Successfully Added"
     except ApiException as error:
         if 'already exists' in str(error):
