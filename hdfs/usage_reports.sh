@@ -11,3 +11,27 @@ curl -v -k -X GET -u guest:guest 'http://nightly512-1.vpc.cloudera.com:7180/api/
 
 
 curl -v -k -X GET -u admin:admin 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/reports/hdfsUsageReport?nameservice=ns1&aggregation=daily' -H "Accept: text/csv" -o hdfsUsageReport_default.csv
+
+
+
+
+
+1)
+Auth to CM and store the cookie:
+
+
+curl --cookie-jar ./mycookies.txt --data "j_username=admin&j_password=admin" http://nightly512-1.vpc.cloudera.com:7180/cmf/login/j_spring_security_check
+
+
+(2)
+Add /solr path as a watched dir
+
+
+curl --cookie ./mycookies.txt --data "path=%2Fsolr" http://nightly512-1.vpc.cloudera.com:7180/cmf/services/3/watcheddir/add
+
+
+(3)
+Remove /solr path as a watched dir
+
+
+curl --cookie ./mycookies.txt --data "path=%2Fsolr" http://nightly512-1.vpc.cloudera.com:7180/cmf/services/3/watcheddir/remove
