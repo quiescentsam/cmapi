@@ -10,7 +10,7 @@
 ```
 curl -v -k -X GET -u admin:admin 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services'
 ```
-**Generate HDFS usage report and output to csv**
+**Generate HDFS usage report and output to csv** role (CLUSTER ADMINISTRATOR)
 
 ```
 curl -v -k -X GET -u guest:guest 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/reports/hdfsUsageReport?nameservice=ns1&aggregation=daily' -H "Accept: text/csv" -o hdfsUsageReport_default.csv
@@ -46,8 +46,8 @@ date,user,size,rawSize,numFiles
 "2018-09-12T14:53:56.000Z",admin,414157,1242471,9
 ```
 
-READ ONLY 
-** Download the Disk usage report **
+
+** Download the Disk usage report ** role (READ ONLY )
 ```
 1. Need to download the CM cookie to local.
 curl -X POST -c cookie -d 'j_username=guest&j_password=guest' http://nightly512-1.vpc.cloudera.com:7180/cmf/j_spring_security_check
@@ -59,18 +59,18 @@ curl -b cookie 'http://nightly512-1.vpc.cloudera.com:7180/cmf/services/4/nameser
 
 
 
-**1)  See currently watched Dir**  READ ONLY 
+**1)  See currently watched Dir**  (READ ONLY )
 ```
 curl -v -k -X GET -u guest:guest  http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/watcheddir
 ```
-**2)  Add directory to watched Dir**  CLUSTER ADMINISTRATOR
+**2)  Add directory to watched Dir**  (CLUSTER ADMINISTRATOR)
 ```
 curl -v -X POST -u guest:guest -H 'Content-Type:application/json' -d '{
      "path": "/solr",
      "path": "/hbase"
 }' 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/watcheddir'
 ```
-**3) Remove directory from Watched list** CLUSTER ADMINISTRATOR
+**3) Remove directory from Watched list** (CLUSTER ADMINISTRATOR)
 ```
 curl -v -X DELETE -u admin:admin -H 'Content-Type:application/json' 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/watcheddir/%2Fhbase'
 
