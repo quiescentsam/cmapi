@@ -46,24 +46,26 @@ date,user,size,rawSize,numFiles
 "2018-09-12T14:53:56.000Z",admin,414157,1242471,9
 ```
 
+READ ONLY user can do this
 ** Download the Disk usage report **
 ```
 1. Need to download the CM cookie to local.
 curl -X POST -c cookie -d 'j_username=guest&j_password=guest' http://nightly512-1.vpc.cloudera.com:7180/cmf/j_spring_security_check
 2. Cat cookie for checking if cookie is downloaded properly.
-3. curl -b cookie 'http://nightly512-1.vpc.cloudera.com:7180/cmf/services/4/nameservices/ns1/reports/currentDiskUsage?groupBy=DIRECTORY&format=CSV' -o test.csvles
+3. 
+curl -b cookie 'http://nightly512-1.vpc.cloudera.com:7180/cmf/services/4/nameservices/ns1/reports/currentDiskUsage?groupBy=DIRECTORY&format=CSV' -o test.csvles
 
 ```
 
 
 
-**1)  See currently watched Dir**  
+**1)  See currently watched Dir**  READ ONLY USER CAN DO
 ```
-curl -v -k -X GET -u admin:admin  http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/watcheddir
+curl -v -k -X GET -u guest:guest  http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/watcheddir
 ```
-**2)  Add directory to watched Dir**
+**2)  Add directory to watched Dir**  
 ```
-curl -v -X POST -u admin:admin -H 'Content-Type:application/json' -d '{
+curl -v -X POST -u guest:guest -H 'Content-Type:application/json' -d '{
      "path": "/solr",
      "path": "/hbase"
 }' 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/watcheddir'
