@@ -52,11 +52,10 @@ date,user,size,rawSize,numFiles
 1. Need to download the CM cookie to local.
 curl -X POST -c cookie -d 'j_username=guest&j_password=guest' http://nightly512-1.vpc.cloudera.com:7180/cmf/j_spring_security_check
 2. Cat cookie for checking if cookie is downloaded properly.
-3. 
+3. Download the report
 curl -b cookie 'http://nightly512-1.vpc.cloudera.com:7180/cmf/services/4/nameservices/ns1/reports/currentDiskUsage?groupBy=DIRECTORY&format=CSV' -o test.csvles
 
 ```
-
 
 
 **1)  See currently watched Dir**  (READ ONLY )
