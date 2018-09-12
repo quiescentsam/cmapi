@@ -1,4 +1,4 @@
-## escapa characters
+## escape characters
 
 %2F - for slashes
 %20 - for spaces
