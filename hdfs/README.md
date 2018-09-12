@@ -60,6 +60,11 @@ wget --load-cookies cookies.txt \
      http://server.com/interesting/article.php
      
      
+     
+     
+     
+     
+     
 wget --save-cookies cookies.txt \
      --keep-session-cookies \
      --post-data 'user=admin&password=admin' \
