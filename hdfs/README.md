@@ -1,4 +1,17 @@
 
+By Now and Daily (defaults)
+$ curl -v -k -X GET -u admin:admin 'http://cm.example.com:7180/api/v5/clusters/Cluster%201/services/hdfs/reports/hdfsUsageReport' -H "Accept: text/csv" -o hdfsUsageReport_default.csv
+By DateRange and Week:
+$ curl -v -k -X GET -u admin:admin 'http://cm.example.com:7180/api/v5/clusters/Cluster%201/services/hdfs/reports/hdfsUsageReport?from=2014-08-01&to=2014-08-21&aggregation=weekly' -H "Accept: text/csv" -o hdfsUsageReport_weekly.csv
+By DateRange and Hour:
+$ curl -v -k -X GET -u admin:admin 'http://cm.example.com:7180/api/v5/clusters/Cluster%201/services/hdfs/reports/hdfsUsageReport?from=2014-08-01&to=2014-08-21&aggregation=hourly' -H "Accept: text/csv" -o hdfsUsageReport_hourly.csv
+Sample Column Headers:
+$ cat hdfsUsageReport_hourly.csv 
+date,user,size,rawSize,numFiles
+
+
+
+
 
 curl -v -k -X GET -u admin:admin 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services'
 
@@ -13,10 +26,25 @@ curl -v -k -X GET -u guest:guest 'http://nightly512-1.vpc.cloudera.com:7180/api/
 curl -v -k -X GET -u admin:admin 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/reports/hdfsUsageReport?nameservice=ns1&aggregation=daily' -H "Accept: text/csv" -o hdfsUsageReport_default.csv
 ```
 
-
+```shell
+bash-3.2$ cat hdfsUsageReport_default.csv
+date,user,size,rawSize,numFiles
+"2018-09-12T14:53:56.000Z",oozie,584314888,1752944664,723
+"2018-09-12T14:53:56.000Z",hive,1355599,4066797,73
+"2018-09-12T14:53:56.000Z",hue,0,0,405
+"2018-09-12T14:53:56.000Z",hdfs,0,0,12
+"2018-09-12T14:53:56.000Z",solr,0,0,1
+"2018-09-12T14:53:56.000Z",spark,0,0,2
+"2018-09-12T14:53:56.000Z",sqoop2,0,0,1
+"2018-09-12T14:53:56.000Z",mapred,8,24,14
+"2018-09-12T14:53:56.000Z",impala,0,0,1
+"2018-09-12T14:53:56.000Z",accumulo,4293,12879,30
+"2018-09-12T14:53:56.000Z",hbase,6622,19866,55
+"2018-09-12T14:53:56.000Z",systest,0,0,3
+"2018-09-12T14:53:56.000Z",admin,414157,1242471,9
+```
 
 **1)  See currently watched Dir**  
-
 ```
 curl -v -k -X GET -u admin:admin  http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/watcheddir
 ```
