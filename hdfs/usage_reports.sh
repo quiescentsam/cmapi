@@ -14,10 +14,10 @@ curl -v -k -X GET -u admin:admin 'http://nightly512-1.vpc.cloudera.com:7180/api/
 
 
 
-1) See currently watched DIR
+#1  See currently watched DIR
 curl -v -k -X GET -u admin:admin  http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/watcheddir
 
-2) Add directory to watched Dir
+#2  Add directory to watched Dir
 
 curl -v -X POST -u admin:admin -H 'Content-Type:application/json' -d '{
      "path": "/solr",
@@ -25,9 +25,9 @@ curl -v -X POST -u admin:admin -H 'Content-Type:application/json' -d '{
 }' 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/watcheddir'
 
 
-3) Remove directory from Watched list
+#3 Remove directory from Watched list
 
-curl -v -X DELETE -u admin:admin -H 'Content-Type:application/json' 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/watcheddir//hbase'
+curl -v -X DELETE -u admin:admin -H 'Content-Type:application/json' 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/watcheddir/%2Fhbase'
 
 
 

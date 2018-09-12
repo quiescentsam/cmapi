@@ -1,3 +1,12 @@
+## escapa characters
+
+%2F - for slashes
+%20 - for spaces
+
+
+
+
+
 #CM API SAMPLES
 
 ```bash
