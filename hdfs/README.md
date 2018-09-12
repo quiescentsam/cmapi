@@ -27,6 +27,28 @@ curl -v -k -X GET -u guest:guest 'http://nightly512-1.vpc.cloudera.com:7180/api/
 
 curl -v -k -X GET -u admin:admin 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/reports/currentDiskUsage?groupBy=DIRECTORY'
 
+
+# Log in to the server.  This only needs to be done once.
+wget --save-cookies cookies.txt \
+     --keep-session-cookies \
+     --post-data 'user=foo&password=bar' \
+     --delete-after \
+     http://server.com/auth.php
+
+# Now grab the page or pages we care about.
+wget --load-cookies cookies.txt \
+     http://server.com/interesting/article.php
+     
+     
+wget --save-cookies cookies.txt \
+     --keep-session-cookies \
+     --post-data 'user=admin&password=admin' \
+     --delete-after \
+     http://nightly512-1.vpc.cloudera.com:7180
+
+
+
+
 wget --user admin --password admin -O DirectoryReport.csv http://nightly512-1.vpc.cloudera.com:7180/cmf/services/4/nameservices/ns1/reports/currentDiskUsage?groupBy=DIRECTORY&format=CSV
 
 **Generate HDFS usage report and output to csv**
