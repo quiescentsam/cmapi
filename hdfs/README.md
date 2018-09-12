@@ -7,7 +7,8 @@
 
 **see the list of service to get HDFS service name**
 
-```curl -v -k -X GET -u admin:admin 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services'
+```
+curl -v -k -X GET -u admin:admin 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services'
 ```
 **Generate HDFS usage report and output to csv**
 
