@@ -60,7 +60,7 @@ wget --load-cookies cookies.txt \
      http://server.com/interesting/article.php
      
      
-     export SESSION_ID=$(curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d "{\"username\": \"admin\", \"password\": \"admin\"}" http://${HOSTPORT}/api/v7/login 2>/dev/null | grep JSESSIONID | cut -d'=' -f2)
+     export SESSION_ID=$(curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d "{\"username\": \"admin\", \"password\": \"admin\"}" http://nightly512-1.vpc.cloudera.com:7180/cmf/login/j_spring_security_check | grep JSESSIONID | cut -d'=' -f2)
      
      # Get Cloudera Manager hostname and port.
      export CM_HOST=$(curl -i -X GET --cookie "JSESSIONID=${SESSION_ID}" "http://${HOSTPORT}/api/v7/environments/${ENVIRONMENT_NAME}/deployments/${DEPLOYMENT_NAME}" 2>/dev/null | grep "hostname" | cut -d':' -f2 | cut -d'"' -f 2 | awk "{if (NR==1) print}")
