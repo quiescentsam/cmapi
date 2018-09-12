@@ -14,7 +14,8 @@ curl -v -k -X GET -u admin:admin 'http://nightly512-1.vpc.cloudera.com:7180/api/
 
 
 
-
+1) See currently watched DIR
+curl -v -k -X GET -u admin:admin  http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/watcheddir
 
 1)
 Auth to CM and store the cookie:
