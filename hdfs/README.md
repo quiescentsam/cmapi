@@ -1,6 +1,6 @@
-#Generate HDFS Disk Usage reports using the Cloudera Manager API
+# Generate HDFS Disk Usage reports using the Cloudera Manager API
 
-##Notes:
+## Notes:
 1. The API supports aggregation by month, day and hour thus the offerings in the Web UI "Current" and "Historical" combined.
 2. When using NameNode HA you must include the "NameService" parameter
 
