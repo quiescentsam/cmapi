@@ -27,7 +27,7 @@ curl --cookie-jar ./mycookies.txt --data "j_username=admin&j_password=admin" htt
 Add /solr path as a watched dir
 
 
-curl --cookie ./mycookies.txt --data "path=%2Fsolr" http://nightly512-1.vpc.cloudera.com:7180/cmf/services/3/watcheddir/add
+curl --cookie ./mycookies.txt --data "path=%2Fsolr" http://nightly512-1.vpc.cloudera.com:7180/cmf/services/HDFS-1/watcheddir/add
 
 
 (3)
