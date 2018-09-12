@@ -25,12 +25,17 @@ curl -v -k -X GET -u admin:admin 'http://nightly512-1.vpc.cloudera.com:7180/api/
 
 curl -v -k -X GET -u guest:guest 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/reports/hdfsUsageReport?nameservice=ns1&aggregation=daily'
 
+curl -v -k -X GET -u admin:admin 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/reports/currentDiskUsage?groupBy=DIRECTORY'
+
+wget http://nightly512-1.vpc.cloudera.com:7180/cmf/services/4/nameservices/ns1/reports/currentDiskUsage?groupBy=DIRECTORY&format=CSV
 
 **Generate HDFS usage report and output to csv**
 
 ```
 curl -v -k -X GET -u admin:admin 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/reports/hdfsUsageReport?nameservice=ns1&aggregation=daily' -H "Accept: text/csv" -o hdfsUsageReport_default.csv
 ```
+
+
 
 ```shell
 bash-3.2$ cat hdfsUsageReport_default.csv
