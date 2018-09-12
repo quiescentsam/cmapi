@@ -47,6 +47,15 @@ date,user,size,rawSize,numFiles
 ```
 
 ** does not work **
+
+1. Need to download the CM cookie to local.
+curl -X POST -c cookie -d 'j_username=admin&j_password=admin' http://nightly512-1.vpc.cloudera.com:7180/cmf/j_spring_security_check
+2. Cat cookie for checking if cookie is downloaded properly.
+3. curl -b cookie 'http://nightly512-1.vpc.cloudera.com:7180/cmf/services/4/nameservices/ns1/reports/currentDiskUsage?groupBy=DIRECTORY&format=CSV' -o test.csvles
+
+
+
+
 ```
 # Log in to the server.  This only needs to be done once.
 wget --save-cookies cookies.txt \
