@@ -44,8 +44,11 @@ wget --save-cookies cookies.txt \
      --keep-session-cookies \
      --post-data 'user=admin&password=admin' \
      --delete-after \
-     http://nightly512-1.vpc.cloudera.com:7180
+     http://nightly512-1.vpc.cloudera.com:7180/cmf/login/j_spring_security_check
 
+
+wget --load-cookies cookies.txt \
+     -O DirectoryReport.csv http://nightly512-1.vpc.cloudera.com:7180/cmf/services/4/nameservices/ns1/reports/currentDiskUsage?groupBy=DIRECTORY&format=CSV
 
 
 
