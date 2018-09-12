@@ -46,66 +46,13 @@ date,user,size,rawSize,numFiles
 "2018-09-12T14:53:56.000Z",admin,414157,1242471,9
 ```
 
-** does not work **
+** Download the Disk usage report **
 
 1. Need to download the CM cookie to local.
 curl -X POST -c cookie -d 'j_username=admin&j_password=admin' http://nightly512-1.vpc.cloudera.com:7180/cmf/j_spring_security_check
 2. Cat cookie for checking if cookie is downloaded properly.
 3. curl -b cookie 'http://nightly512-1.vpc.cloudera.com:7180/cmf/services/4/nameservices/ns1/reports/currentDiskUsage?groupBy=DIRECTORY&format=CSV' -o test.csvles
 
-
-
-
-```
-# Log in to the server.  This only needs to be done once.
-wget --save-cookies cookies.txt \
-     --keep-session-cookies \
-     --post-data 'user=foo&password=bar' \
-     --delete-after \
-     http://server.com/auth.php
-
-# Now grab the page or pages we care about.
-wget --load-cookies cookies.txt \
-     http://server.com/interesting/article.php
-     
-     
-     export SESSION_ID=$(curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d "{\"username\": \"admin\", \"password\": \"admin\"}" http://nightly512-1.vpc.cloudera.com:7180/cmf/login/j_spring_security_check | grep JSESSIONID | cut -d'=' -f2)
-     
-     # Get Cloudera Manager hostname and port.
-     export CM_HOST=$(curl -i -X GET --cookie "JSESSIONID=${SESSION_ID}" "http://${HOSTPORT}/api/v7/environments/${ENVIRONMENT_NAME}/deployments/${DEPLOYMENT_NAME}" 2>/dev/null | grep "hostname" | cut -d':' -f2 | cut -d'"' -f 2 | awk "{if (NR==1) print}")
-     
-     # Log out from Cloudera Director and close session.
-     curl -i  -H "Accept: application/json" -H "Content-Type: application/json" -X POST --cookie "JSESSIONID=${SESSION_ID}" -d "{}" http://${HOSTPORT}/api/v7/logout 2>/dev/null >dev/null
-
-     
- curl -i -X GET --cookie "CLOUDERA_MANAGER_SESSIONID=1ffop9ami2i511kh0pgzllguoe"  http://nightly512-1.vpc.cloudera.com:7180/cmf/services/4/nameservices/ns1/reports/currentDiskUsage?groupBy=DIRECTORY&format=CSV   
-     
-     
-wget --save-cookies cookies.txt \
-     --keep-session-cookies \
-     --post-data 'user=admin&password=admin' \
-     --delete-after \
-     http://nightly512-1.vpc.cloudera.com:7180/cmf/login/j_spring_security_check
-
-wget --load-cookies cookies.txt \
-     -O DirectoryReport.csv http://nightly512-1.vpc.cloudera.com:7180/cmf/services/4/nameservices/ns1/reports/currentDiskUsage?groupBy=DIRECTORY&format=CSV
-```
-
-wget -q –post-data="j_username=admin&j_password=admin" –save-cookies cookies.txt –keep-session-cookies -O /dev/null http://nightly512-1.vpc.cloudera.com:7180/j_spring_security_check
-wget -q -O ${EXPORT_FILE} –load-cookies ${COOKIES_FILE} ${SCM_URL}/cmf/exportCLI
-
-
-
-
-#!/bin/bash
-USERNAME=admin
-PASSWORD=admin
-SCM_URL=http://nightly512-1.vpc.cloudera.com:7180
-COOKIES_FILE=cookies.txt
-EXPORT_FILE=export.txt
-
-wget -q --post-data="j_username=${USERNAME}&j_password=${PASSWORD}" --save-cookies ${COOKIES_FILE} --keep-session-cookies -O /dev/null ${SCM_URL}/j_spring_security_check
-wget -q -O ${EXPORT_FILE} --load-cookies ${COOKIES_FILE} ${SCM_URL}/cmf/exportCLI
 
 
 **1)  See currently watched Dir**  
