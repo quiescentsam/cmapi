@@ -82,6 +82,12 @@ wget --load-cookies cookies.txt \
      -O DirectoryReport.csv http://nightly512-1.vpc.cloudera.com:7180/cmf/services/4/nameservices/ns1/reports/currentDiskUsage?groupBy=DIRECTORY&format=CSV
 ```
 
+wget -q –post-data="j_username=admin&j_password=admin" –save-cookies cookies.txt –keep-session-cookies -O /dev/null http://nightly512-1.vpc.cloudera.com:7180/j_spring_security_check
+wget -q -O ${EXPORT_FILE} –load-cookies ${COOKIES_FILE} ${SCM_URL}/cmf/exportCLI
+
+
+
+
 
 
 
