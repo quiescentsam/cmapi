@@ -88,7 +88,15 @@ wget -q -O ${EXPORT_FILE} –load-cookies ${COOKIES_FILE} ${SCM_URL}/cmf/exportC
 
 
 
+#!/bin/bash
+USERNAME=admin
+PASSWORD=admin
+SCM_URL=http://nightly512-1.vpc.cloudera.com:7180
+COOKIES_FILE=cookies.txt
+EXPORT_FILE=export.txt
 
+wget -q --post-data="j_username=${USERNAME}&j_password=${PASSWORD}" --save-cookies ${COOKIES_FILE} --keep-session-cookies -O /dev/null ${SCM_URL}/j_spring_security_check
+wget -q -O ${EXPORT_FILE} --load-cookies ${COOKIES_FILE} ${SCM_URL}/cmf/exportCLI
 
 
 **1)  See currently watched Dir**  
