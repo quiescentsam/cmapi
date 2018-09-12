@@ -27,10 +27,7 @@ curl -v -X POST -u admin:admin -H 'Content-Type:application/json' -d '{
 
 3) Remove directory from Watched list
 
-curl -v -X DELETE -u admin:admin -H 'Content-Type:application/json' -d '{
-     "path": "/solr",
-     "path": "/hbase"
-}' 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/watcheddir'
+curl -v -X DELETE -u admin:admin -H 'Content-Type:application/json' 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/watcheddir/\/hbase'
 
 
 
