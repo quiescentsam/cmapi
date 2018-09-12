@@ -1,3 +1,11 @@
+#Generate HDFS Disk Usage reports using the Cloudera Manager API
+
+##Notes:
+1. The API supports aggregation by month, day and hour thus the offerings in the Web UI "Current" and "Historical" combined.
+2. When using NameNode HA you must include the "NameService" parameter
+
+
+
 
 By Now and Daily (defaults)
 $ curl -v -k -X GET -u admin:admin 'http://cm.example.com:7180/api/v5/clusters/Cluster%201/services/hdfs/reports/hdfsUsageReport' -H "Accept: text/csv" -o hdfsUsageReport_default.csv
@@ -5,9 +13,7 @@ By DateRange and Week:
 $ curl -v -k -X GET -u admin:admin 'http://cm.example.com:7180/api/v5/clusters/Cluster%201/services/hdfs/reports/hdfsUsageReport?from=2014-08-01&to=2014-08-21&aggregation=weekly' -H "Accept: text/csv" -o hdfsUsageReport_weekly.csv
 By DateRange and Hour:
 $ curl -v -k -X GET -u admin:admin 'http://cm.example.com:7180/api/v5/clusters/Cluster%201/services/hdfs/reports/hdfsUsageReport?from=2014-08-01&to=2014-08-21&aggregation=hourly' -H "Accept: text/csv" -o hdfsUsageReport_hourly.csv
-Sample Column Headers:
-$ cat hdfsUsageReport_hourly.csv 
-date,user,size,rawSize,numFiles
+
 
 
 
