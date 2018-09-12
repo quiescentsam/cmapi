@@ -69,7 +69,7 @@ wget --load-cookies cookies.txt \
      curl -i  -H "Accept: application/json" -H "Content-Type: application/json" -X POST --cookie "JSESSIONID=${SESSION_ID}" -d "{}" http://${HOSTPORT}/api/v7/logout 2>/dev/null >dev/null
 
      
-     
+ curl -i -X GET --cookie "CLOUDERA_MANAGER_SESSIONID=1ffop9ami2i511kh0pgzllguoe"  http://nightly512-1.vpc.cloudera.com:7180/cmf/services/4/nameservices/ns1/reports/currentDiskUsage?groupBy=DIRECTORY&format=CSV   
      
      
 wget --save-cookies cookies.txt \
