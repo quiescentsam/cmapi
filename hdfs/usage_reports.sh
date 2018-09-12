@@ -21,7 +21,7 @@ curl -v -k -X GET -u admin:admin  http://nightly512-1.vpc.cloudera.com:7180/api/
 Add directory to watched Dir
 
 curl -v -X POST -u admin:admin -H 'Content-Type:application/json' -d '{
-     "watchedDir": "/solr"
+     "path": "/solr"
 }' 'http://nightly512-1.vpc.cloudera.com:7180/api/v14/clusters/Cluster%201/services/HDFS-1/watcheddir'
 
 
