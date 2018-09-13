@@ -1,3 +1,8 @@
+github: https://github.com/sebinjohn/cloudera_bdr
+
+
+
+
 #BDR automation
 
 
