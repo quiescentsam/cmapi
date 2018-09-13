@@ -1,5 +1,5 @@
 public git repo:  https://github.com/bkvarda/clouderasizer
-
+ruby  https://github.com/Microsoft/fluent-plugin-clouderametrics
 
 
 Generate Historical TimeSeries reports (e.g. Application, Impala) using the Cloudera Manager API
