@@ -1,3 +1,7 @@
+public git repo:  https://github.com/bkvarda/clouderasizer
+
+
+
 Generate Historical TimeSeries reports (e.g. Application, Impala) using the Cloudera Manager API
 
 Step 1 : Generate Base JSON Queries:
