@@ -41,3 +41,9 @@ wget --user --password admin -O cmdb.json http://host:7180/api/v19/cm/scmDbInfo?
 ## Scripts
 
 1. CM dump config [example](scripts/cm-dump-config.md)
+
+
+
+Java Example:
+
+https://github.com/namrata01/cloudera-manager-automation
