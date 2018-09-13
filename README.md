@@ -47,3 +47,6 @@ wget --user --password admin -O cmdb.json http://host:7180/api/v19/cm/scmDbInfo?
 Java Example:
 
 https://github.com/namrata01/cloudera-manager-automation
+
+Genreric
+https://github.com/jameyhanson/CM_API
