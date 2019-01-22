@@ -1,3 +1,19 @@
+https://cloudera.app.box.com/file/75000334202 (CM API for partners)
+https://cloudera.app.box.com/file/124546077676 (Navigator Lineage)
+https://wiki.cloudera.com/display/~svenkataramanasam/CM+API+examples
+https://wiki.cloudera.com/display/PRODUCT/CM+API+integration+with+other+tools
+
+https://wiki.cloudera.com/display/COPS/CM+API+curl+usage+examples
+
+https://archive.cloudera.com/cm6/6.1.0/generic/jar/cm_api/apidocs/index.html
+
+https://cloudera.github.io/cm_api/docs/python-client-swagger/
+
+https://github.com/cloudera/cm_api
+
+
+
+
 ## escape characters
 
 %2F - for slashes  
