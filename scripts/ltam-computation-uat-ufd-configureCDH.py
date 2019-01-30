@@ -92,7 +92,6 @@ def configure_services(cluster):
                          'mapreduce_reduce_memory_mb': '12288',
                          'mapred_task_timeout': '600000'}
                    )
-        if service_type == 'SENTRY':
 
 
 def wait_for_command(msg, command):
