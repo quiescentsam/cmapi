@@ -9,3 +9,4 @@ cm_password = 'admin'
 
 api = ApiResource(cm_host, cm_port, cm_username, cm_password, version=7)
 cm = ClouderaManager(api)
+cm.get_license()
