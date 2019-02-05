@@ -9,7 +9,7 @@ license_file = '/Users/ssiddiqui/Desktop/SAMEER2.0/WORK/CODE/cloud/sameer_ahmad_
 
 
 
-api = ApiResource(cm_host, cm_port, cm_username, cm_password, version=7)
+api = ApiResource(cm_host, cm_port, cm_username, cm_password, version=15)
 cm = ClouderaManager(api)
 license = open(license_file, 'r').read()
 cm.update_license(license)
