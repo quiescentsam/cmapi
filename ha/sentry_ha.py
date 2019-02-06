@@ -19,11 +19,22 @@ def get_host_id(hostname):
             return host.hostId
 
 
+def get_service_name(service_type, cluster_api, cluster_name):
+    """
+    Inputs: Common name of the Service,cluster APiResource and cluster name
+    :return: Service name , returns "None" if service is not present
+    """
+    cluster = cluster_api.get_cluster(cluster_name)
+    services = cluster.get_all_services()
+    for service_name in services:
+        if service_type in service_name.name:
+            return service_name.name
+    return None
 
 if __name__ == '__main__':
     new_sentry_host_id = get_host_id(new_sentry_host)
     print new_sentry_host_id
-    services = api.
+    
 
 
 
