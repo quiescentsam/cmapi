@@ -34,7 +34,8 @@ def get_service_name(service_type, cluster_api, cluster_name):
 if __name__ == '__main__':
     new_sentry_host_id = get_host_id(new_sentry_host)
     print new_sentry_host_id
-    zkServiceName = get_service_name('ZOOKEEPER', api, 'cluster_1')
+    #zkServiceName = get_service_name('ZOOKEEPER', api, 'cluster_1')
+    cluster = api.get_cluster('cluster_1')
     print zkServiceName
 
 
