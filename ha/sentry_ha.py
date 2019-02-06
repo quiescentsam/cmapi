@@ -11,33 +11,39 @@ api = ApiResource(cm_host, cm_port, cm_username, cm_password, version=15)
 cluster = api.get_cluster()
 
 def get_host_id():
-    HOST_ID=requests.get()
-
-args = dict(
-    newSentryHostId = new_sentry_host_id,
-    newSentryRoleName =  new_sentry_role_name,
-    zkServiceName = zk_service_name,
-    rrcArgs = {
-        "slaveBatchSize" : 12345,
-        "sleepSeconds" : 12345,
-        "slaveFailCountThreshold" : 12345
-    })
+    HOST_ID=requests.get("http://sam-1.vpc.cloudera.com:7180/api/v19/hosts")
+    print HOST_ID
 
 
-enable = requests.post("http://sam-1.vpc.cloudera.com:7180/clusters/cluster_1/services/sentry/commands/enableSentryHa", args)
+if __name__ == '__main__':
 
-def enable_sentry_ha(self, new_sentry_host_id, new_sentry_role_name, zk_service_name):
-    args = dict(
-            newSentryHostId = new_sentry_host_id,
-            newSentryRoleName =  new_sentry_role_name,
-            zkServiceName = zk_service_name,
-            rrcArgs = {
-                "slaveBatchSize" : 12345,
-                "sleepSeconds" : 12345,
-                "slaveFailCountThreshold" : 12345
-            }
-    )
-    return self._cmd('enableSentryHa', data=args)
+
+
+# args = dict(
+#     newSentryHostId = new_sentry_host_id,
+#     newSentryRoleName =  new_sentry_role_name,
+#     zkServiceName = zk_service_name,
+#     rrcArgs = {
+#         "slaveBatchSize" : 12345,
+#         "sleepSeconds" : 12345,
+#         "slaveFailCountThreshold" : 12345
+#     })
+#
+#
+# enable = requests.post("http://sam-1.vpc.cloudera.com:7180/clusters/cluster_1/services/sentry/commands/enableSentryHa", args)
+
+# def enable_sentry_ha(self, new_sentry_host_id, new_sentry_role_name, zk_service_name):
+#     args = dict(
+#             newSentryHostId = new_sentry_host_id,
+#             newSentryRoleName =  new_sentry_role_name,
+#             zkServiceName = zk_service_name,
+#             rrcArgs = {
+#                 "slaveBatchSize" : 12345,
+#                 "sleepSeconds" : 12345,
+#                 "slaveFailCountThreshold" : 12345
+#             }
+#     )
+#     return self._cmd('enableSentryHa', data=args)
 
 # def enable_rm_ha(self, new_rm_host_id, zk_service_name=None):
 #     """
