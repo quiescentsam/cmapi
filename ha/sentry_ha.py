@@ -1,6 +1,6 @@
 from cm_api.api_client import ApiResource
 import requests
-from cm_api.endpoints.services import 
+from cm_api.endpoints.services import ApiServiceSetupInfo
 
 cm_host = "sam-1.vpc.cloudera.com"
 cm_port = 7180
@@ -10,7 +10,8 @@ cm_password = 'admin'
 api = ApiResource(cm_host, cm_port, cm_username, cm_password, version=15)
 cluster = api.get_cluster()
 
-
+def get_host_id():
+    HOS
 
 args = dict(
     newSentryHostId = new_sentry_host_id,
