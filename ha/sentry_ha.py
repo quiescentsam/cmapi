@@ -13,7 +13,19 @@ cluster.
 
 
 def enable_sentry_ha()
-    
+    args = dict(
+        {
+            newSentryHostId : "...",
+            newSentryRoleName : "...",
+            zkServiceName : "...",
+            rrcArgs : {
+                "slaveBatchSize" : 12345,
+                "sleepSeconds" : 12345,
+                "slaveFailCountThreshold" : 12345
+            }
+        }
+    )
+    return self._cmd('enableSentry')
 
 def enable_rm_ha(self, new_rm_host_id, zk_service_name=None):
     """
