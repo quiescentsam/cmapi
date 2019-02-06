@@ -11,7 +11,7 @@ api = ApiResource(cm_host, cm_port, cm_username, cm_password, version=15)
 cluster = api.get_cluster()
 
 def get_host_id():
-    HOS
+    HOST_ID=requests.get()
 
 args = dict(
     newSentryHostId = new_sentry_host_id,
