@@ -38,7 +38,7 @@ if __name__ == '__main__':
 
     cluster = api.get_cluster('cluster_1')
 
-    roles = api.get_all_roles()
+    roles = 
     print roles
 
 
