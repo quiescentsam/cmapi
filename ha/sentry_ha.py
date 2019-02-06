@@ -16,7 +16,7 @@ def get_host_id():
 
 
 if __name__ == '__main__':
-
+    get_host_id()
 
 
 # args = dict(
