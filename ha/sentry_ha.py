@@ -37,7 +37,8 @@ if __name__ == '__main__':
     print zkServiceName
 
     cluster = api.get_cluster('cluster_1')
-    roles = cluster.get_all_roles()
+
+    roles = api.get_all_roles()
     print roles
 
 
