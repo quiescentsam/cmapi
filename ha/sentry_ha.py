@@ -36,7 +36,11 @@ if __name__ == '__main__':
     print new_sentry_host_id
     #zkServiceName = get_service_name('ZOOKEEPER', api, 'cluster_1')
     cluster = api.get_cluster('cluster_1')
-    print zkServiceName
+    services = cluster.get_all_services()
+    for service in services:
+        print service.name, 
+
+
 
 
 
