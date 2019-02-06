@@ -6,6 +6,7 @@ cm_host = "sam-1.vpc.cloudera.com"
 cm_port = 7180
 cm_username = 'admin'
 cm_password = 'admin'
+new_sentry_host = "sam-8.vpc.cloudera.com"
 
 api = ApiResource(cm_host, cm_port, cm_username, cm_password, version=15)
 hosts = api.get_all_hosts()
@@ -18,11 +19,14 @@ def get_host_id(hostname):
             return host.hostId
 
 
-for host in hosts:
-    print host.hostname, host.hostId
-print hosts
-hostid= get_host_id("sam-8.vpc.cloudera.com")
-print hostid
+if __name__ == '__main__':
+    for host in hosts:
+        print host.hostname, host.hostId
+    new_sentry_host_id = get_host_id(new_sentry_host)
+    print new_sentry_host_id
+
+
+
 
 
 
