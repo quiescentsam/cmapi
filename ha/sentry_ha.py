@@ -13,7 +13,7 @@ cluster.services.enable_rm_ha()
 cluster.services.enable_sentry_ha()
 
 
-
+enable = requests
 
 def enable_sentry_ha(self, new_sentry_host_id, new_sentry_role_name, zk_service_name):
     args = dict(
