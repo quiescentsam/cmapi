@@ -7,4 +7,6 @@ cm_username = 'admin'
 cm_password = 'admin'
 
 api = ApiResource(cm_host, cm_port, cm_username, cm_password, version=15)
+cluster = api.get_cluster()
+cluster.
 
