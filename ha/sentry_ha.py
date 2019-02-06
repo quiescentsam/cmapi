@@ -1,6 +1,7 @@
 from cm_api.api_client import ApiResource
 import requests
 from cm_api.endpoints.services import ApiServiceSetupInfo
+from cm_api.endpoints import roles, role_config_groups
 
 cm_host = "sam-1.vpc.cloudera.com"
 cm_port = 7180
@@ -38,8 +39,6 @@ if __name__ == '__main__':
 
     cluster = api.get_cluster('cluster_1')
 
-    roles = 
-    print roles
 
 
 
