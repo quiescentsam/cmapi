@@ -9,15 +9,20 @@ cm_password = 'admin'
 
 api = ApiResource(cm_host, cm_port, cm_username, cm_password, version=15)
 hosts = api.get_all_hosts()
+
+
+def get_host_id(hostname):
+    hosts = api.get_all_hosts()
+    for host in hosts:
+        if host.hostname == hostname:
+            return host.hostId
+
+
 for host in hosts:
     print host.hostname, host.hostId
 print hosts
-
-def get_host_id():
-    HOST_ID=requests.get("http://sam-1.vpc.cloudera.com:7180/api/v19/hosts")
-    print HOST_ID
-
-
+hostid= get_host_id("sam-8.vpc.cloudera.com")
+print hostid
 
 
 
