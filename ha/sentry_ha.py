@@ -9,6 +9,8 @@ cm_password = 'admin'
 api = ApiResource(cm_host, cm_port, cm_username, cm_password, version=15)
 cluster = api.get_cluster()
 
+
+
 args = dict(
     newSentryHostId = new_sentry_host_id,
     newSentryRoleName =  new_sentry_role_name,
