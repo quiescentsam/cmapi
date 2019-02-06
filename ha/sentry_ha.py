@@ -1,5 +1,4 @@
 from cm_api.api_client import ApiResource
-from cm_api.endpoints.cms import ClouderaManager
 import requests
 
 cm_host = "sam-1.vpc.cloudera.com"
@@ -9,11 +8,19 @@ cm_password = 'admin'
 
 api = ApiResource(cm_host, cm_port, cm_username, cm_password, version=15)
 cluster = api.get_cluster()
-cluster.services.enable_rm_ha()
-cluster.services.enable_sentry_ha()
+
+args = dict(
+    newSentryHostId = new_sentry_host_id,
+    newSentryRoleName =  new_sentry_role_name,
+    zkServiceName = zk_service_name,
+    rrcArgs = {
+        "slaveBatchSize" : 12345,
+        "sleepSeconds" : 12345,
+        "slaveFailCountThreshold" : 12345
+    })
 
 
-enable = requests
+enable = requests.post("http://sam-1.vpc.cloudera.com:7180/clusters/cluster_1/services/sentry/commands/enableSentryHa", args)
 
 def enable_sentry_ha(self, new_sentry_host_id, new_sentry_role_name, zk_service_name):
     args = dict(
