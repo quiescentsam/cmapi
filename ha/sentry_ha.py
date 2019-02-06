@@ -38,7 +38,7 @@ if __name__ == '__main__':
     cluster = api.get_cluster('cluster_1')
     services = cluster.get_all_services()
     for service in services:
-        print service.name, 
+        print service.name, service.type
 
 
 
