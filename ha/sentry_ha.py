@@ -36,6 +36,10 @@ if __name__ == '__main__':
     zkServiceName = get_service_name('ZOOKEEPER', api, 'cluster_1')
     print zkServiceName
 
+    cluster = api.get_cluster('cluster_1')
+    roles = cluster.get_all_roles()
+    print roles
+
 
 
 
