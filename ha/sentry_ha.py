@@ -1,5 +1,6 @@
 from cm_api.api_client import ApiResource
 from cm_api.endpoints.cms import ClouderaManager
+import requests
 
 cm_host = "sam-1.vpc.cloudera.com"
 cm_port = 7180
