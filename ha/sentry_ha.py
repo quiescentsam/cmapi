@@ -19,26 +19,26 @@ def get_host_id(hostname):
             return host.hostId
 
 
-def get_service_name(service_type, cluster_api, cluster_name):
+def get_service_name(service_type, api, cluster_name):
     """
     Inputs: Common name of the Service,cluster APiResource and cluster name
     :return: Service name , returns "None" if service is not present
     """
-    cluster = cluster_api.get_cluster(cluster_name)
+    cluster = api.get_cluster(cluster_name)
     services = cluster.get_all_services()
     for service_name in services:
-        if service_type in service_name.name:
+        if service_type in service_name.type:
             return service_name.name
-    return None
 
 if __name__ == '__main__':
     new_sentry_host_id = get_host_id(new_sentry_host)
     print new_sentry_host_id
-    #zkServiceName = get_service_name('ZOOKEEPER', api, 'cluster_1')
-    cluster = api.get_cluster('cluster_1')
-    services = cluster.get_all_services()
-    for service in services:
-        print service.name, service.type
+    zkServiceName = get_service_name('ZOOKEEPER', api, 'cluster_1')
+    print zkServiceName
+    # cluster = api.get_cluster('cluster_1')
+    # services = cluster.get_all_services()
+    # for service in services:
+    #     print service.name, service.type
 
 
 
