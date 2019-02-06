@@ -19,12 +19,11 @@ def get_host_id(hostname):
             return host.hostId
 
 
+
 if __name__ == '__main__':
-    for host in hosts:
-        print host.hostname, host.hostId
     new_sentry_host_id = get_host_id(new_sentry_host)
     print new_sentry_host_id
-
+    services = api.
 
 
 
