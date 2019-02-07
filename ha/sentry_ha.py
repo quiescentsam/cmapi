@@ -30,14 +30,14 @@ cm_port = 7180
 cm_username = 'admin'
 cm_password = 'admin'
 new_sentry_host = "bluedata-gsk-5.vpc.cloudera.com"
+cluster_name = 'cluster_1'
 
 api = ApiResource(cm_host, cm_port, cm_username, cm_password, version=15)
 hosts = api.get_all_hosts()
-api_client = cm_client.ApiClient('http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19')
-services = cm_client.ServicesResourceApi.read_services('cluster_1', view='SUMMARY')
-service = cm_client.ServicesResourceApi.read_services('cluster_1', view='SUMMARY')
-print services
-
+cluster = api.get_cluster(cluster_name)
+services =  cluster.get_all_services()
+for service in services:
+    
 #
 # def get_host_id(hostname):
 #     hosts = api.get_all_hosts()
