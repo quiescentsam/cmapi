@@ -51,11 +51,11 @@ if __name__ == '__main__':
     enable = requests.post("http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=arguments)
     print enable
 
-
-
-authorization: Basic YWRtaW46YWRtaW4=
-content-type: application/json
-cookie: __utmc=6357089; __utmz=6357089.1549380934.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=6357089.656093885.1513718057.1549500031.1549551794.7; __utmb=6357089.108.8.1549554498173
+#
+#
+# authorization: Basic YWRtaW46YWRtaW4=
+# content-type: application/json
+# cookie: __utmc=6357089; __utmz=6357089.1549380934.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=6357089.656093885.1513718057.1549500031.1549551794.7; __utmb=6357089.108.8.1549554498173
 
 # def enable_sentry_ha(self, new_sentry_host_id, new_sentry_role_name, zk_service_name):
 #     args = dict(
