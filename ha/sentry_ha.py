@@ -37,7 +37,9 @@ hosts = api.get_all_hosts()
 cluster = api.get_cluster(cluster_name)
 services =  cluster.get_all_services()
 for service in services:
-    
+    if service.type == "SENTRY":
+        roles = cluster.get_all_roles
+        print service.type
 #
 # def get_host_id(hostname):
 #     hosts = api.get_all_hosts()
