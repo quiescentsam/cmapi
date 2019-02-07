@@ -31,13 +31,18 @@ def get_service_name(service_type, api, cluster_name):
         if service_type in service_name.type:
             return service_name.name
 
+def get_role_name():
+    role_name=requests.get('http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/roles')
+    print role_name
+    return role_name
+
 if __name__ == '__main__':
     new_sentry_host_id = get_host_id(new_sentry_host)
     print new_sentry_host_id
     zk_service_name = get_service_name('ZOOKEEPER', api, 'cluster_1')
     print zk_service_name
     arguments={
-        "newSentryHostId": "0cd834a2-f5ad-441c-9cc6-6ad3e26de9d4",
+        "newSentryHostId": new_sentry_host_id,
         "newSentryRoleName": "sentry-SENTRY_SERVER-5e590a9a495e2b4b7cca67babca370d0",
         "zkServiceName": zk_service_name,
         "rrcArgs": {
@@ -53,3 +58,5 @@ if __name__ == '__main__':
     enable = requests.post("http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=json.dumps(arguments), headers=headers )
     print enable
 
+    role_name=requests.get('http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/roles')
+    print role_name
