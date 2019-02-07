@@ -38,7 +38,7 @@ cluster = api.get_cluster(cluster_name)
 services =  cluster.get_all_services()
 for service in services:
     if service.type == "SENTRY":
-        roles = get_all_roles(api, 'SENTRY', 'cluster_1')
+        roles = service.get_all_roles()
         print roles
         print service.type
 #
