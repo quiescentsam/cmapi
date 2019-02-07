@@ -1,5 +1,5 @@
 from cm_api.api_client import ApiResource
-import requests
+import requests,json
 from cm_api.endpoints.services import ApiServiceSetupInfo
 from cm_api.endpoints import roles, role_config_groups
 
@@ -49,12 +49,9 @@ if __name__ == '__main__':
     headers = {
         'Content-Type': 'application/json',
     }
-    params = {
-        'access_token': access_token,
-    }
 
     #enable = requests.post("http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=arguments, headers=headers)
-    enable = requests.post("http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=arguments, headers=headers )
+    enable = requests.post("http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=json.dumps(arguments), headers=headers )
     print enable
 
 #
