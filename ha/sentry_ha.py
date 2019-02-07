@@ -3,7 +3,7 @@ import requests
 from cm_api.endpoints.services import ApiServiceSetupInfo
 from cm_api.endpoints import roles, role_config_groups
 
-cm_host = "sam-1.vpc.cloudera.com"
+cm_host = "bluedata-gsk-1.vpc.cloudera.com"
 cm_port = 7180
 cm_username = 'admin'
 cm_password = 'admin'
