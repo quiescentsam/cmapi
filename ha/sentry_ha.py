@@ -39,7 +39,7 @@ services =  cluster.get_all_services()
 for service in services:
     if service.type == "SENTRY":
         roles = service.get_all_roles()
-        print roles
+        print roles[1].name
         print service.type
 #
 # def get_host_id(hostname):
