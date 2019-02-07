@@ -35,8 +35,8 @@ api = ApiResource(cm_host, cm_port, cm_username, cm_password, version=15)
 hosts = api.get_all_hosts()
 api_client = cm_client.ApiClient('http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19')
 services = cm_client.ServicesResourceApi
-
-
+service = cm_client.ServicesResourceApi.read_services(, 'cluster_1', view='SUMMARY')
+print services
 
 #
 # def get_host_id(hostname):
