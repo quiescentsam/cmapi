@@ -47,6 +47,8 @@ if __name__ == '__main__':
             "sleepSeconds" : 10,
             "slaveFailCountThreshold" : 12345
         })
+
+    
 #
 #
 # enable = requests.post("http://sam-1.vpc.cloudera.com:7180/clusters/cluster_1/services/sentry/commands/enableSentryHa", args)
