@@ -33,7 +33,8 @@ new_sentry_host = "bluedata-gsk-5.vpc.cloudera.com"
 
 api = ApiResource(cm_host, cm_port, cm_username, cm_password, version=15)
 hosts = api.get_all_hosts()
-roles = api.RoleConfigGroupsResourceApi()
+api_client = cm_client.ApiClient('http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19')
+roles = cm_client.RoleConfigGroupsResourceApi()
 print roles
 
 
