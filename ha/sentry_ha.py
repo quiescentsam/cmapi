@@ -34,28 +34,19 @@ def get_service_name(service_type, api, cluster_name):
 if __name__ == '__main__':
     new_sentry_host_id = get_host_id(new_sentry_host)
     print new_sentry_host_id
-    zkServiceName = get_service_name('ZOOKEEPER', api, 'cluster_1')
-    print zkServiceName
+    zk_service_name = get_service_name('ZOOKEEPER', api, 'cluster_1')
 
-    cluster = api.get_cluster('cluster_1')
-    role = api
-    roles = api.api_client.role
-    print roles
+#    cluster = api.get_cluster('cluster_1')
 
-
-
-
-
-
-# args = dict(
-#     newSentryHostId = new_sentry_host_id,
-#     newSentryRoleName =  new_sentry_role_name,
-#     zkServiceName = zk_service_name,
-#     rrcArgs = {
-#         "slaveBatchSize" : 12345,
-#         "sleepSeconds" : 12345,
-#         "slaveFailCountThreshold" : 12345
-#     })
+    args = dict(
+        newSentryHostId = new_sentry_host_id,
+        newSentryRoleName =  'sentry-SENTRY_SERVER-BASE',
+        zkServiceName = zk_service_name,
+        rrcArgs = {
+            "slaveBatchSize" : 12345,
+            "sleepSeconds" : 10,
+            "slaveFailCountThreshold" : 12345
+        })
 #
 #
 # enable = requests.post("http://sam-1.vpc.cloudera.com:7180/clusters/cluster_1/services/sentry/commands/enableSentryHa", args)
