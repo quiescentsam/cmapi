@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
     args = dict(
         newSentryHostId = new_sentry_host_id,
-        newSentryRoleName =  'sentry-SENTRY_SERVER-BASE',
+        newSentryRoleName =  'sentry-SENTRY_SERVER-second',
         zkServiceName = zk_service_name,
         rrcArgs = {
             "slaveBatchSize" : 12345,
@@ -48,7 +48,7 @@ if __name__ == '__main__':
             "slaveFailCountThreshold" : 12345
         })
 
-    enable = requests.post("http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v31/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=args)
+    enable = requests.post("http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=args)
     print enable
 
 # def enable_sentry_ha(self, new_sentry_host_id, new_sentry_role_name, zk_service_name):
