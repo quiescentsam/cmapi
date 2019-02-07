@@ -38,6 +38,7 @@ if __name__ == '__main__':
     print zkServiceName
 
     cluster = api.get_cluster('cluster_1')
+    role = api
     roles = api.api_client.role
     print roles
 
