@@ -2,6 +2,7 @@ from cm_api.api_client import ApiResource
 import requests,json
 from cm_api.endpoints.services import ApiServiceSetupInfo
 from cm_api.endpoints import roles, role_config_groups
+import cm_client
 
 cm_host = "bluedata-gsk-1.vpc.cloudera.com"
 cm_port = 7180
@@ -11,6 +12,8 @@ new_sentry_host = "bluedata-gsk-5.vpc.cloudera.com"
 
 api = ApiResource(cm_host, cm_port, cm_username, cm_password, version=15)
 hosts = api.get_all_hosts()
+roles = api.RoleConfigGroupsResourceApi()
+print roles
 
 
 def get_host_id(hostname):
@@ -61,5 +64,3 @@ if __name__ == '__main__':
     role_name=requests.get('http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/roles', auth=('admin', 'admin'))
 
 
-
-    
