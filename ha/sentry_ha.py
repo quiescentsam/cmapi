@@ -46,7 +46,7 @@ if __name__ == '__main__':
             "slaveFailCountThreshold": 10
         }
     }
-    headers = {}
+    headers = {'content-type': 'application/json'}
 
     enable = requests.post("http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=arguments, headers=headers)
     print enable
