@@ -39,15 +39,15 @@ if __name__ == '__main__':
 
 #    cluster = api.get_cluster('cluster_1')
 
-    args = {
+    args = '{
         newSentryHostId = '0cd834a2-f5ad-441c-9cc6-6ad3e26de9d4',
         newSentryRoleName =  'sentry-SENTRY_SERVER-second',
-        zkServiceName = zk_service_name,
+        zkServiceName = 'zookeeper',
         rrcArgs = {
-            "slaveBatchSize" : 12345,
+            "slaveBatchSize" : 10,
             "sleepSeconds" : 10,
-            "slaveFailCountThreshold" : 12345
-        }}
+            "slaveFailCountThreshold" : 10
+        }}'
 
     enable = requests.post("http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=args)
     print enable
