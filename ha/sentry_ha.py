@@ -58,5 +58,5 @@ if __name__ == '__main__':
     enable = requests.post("http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=json.dumps(arguments), headers=headers )
     print enable
 
-    role_name=requests.get('http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/roles')
-    print role_name
+    role_name=requests.get('http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/roles', auth=('admin', 'admin'))
+    print role_name.
