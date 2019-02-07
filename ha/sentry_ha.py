@@ -7,7 +7,7 @@ cm_host = "bluedata-gsk-1.vpc.cloudera.com"
 cm_port = 7180
 cm_username = 'admin'
 cm_password = 'admin'
-new_sentry_host = "sam-8.vpc.cloudera.com"
+new_sentry_host = "bluedata-gsk-5.vpc.cloudera.com"
 
 api = ApiResource(cm_host, cm_port, cm_username, cm_password, version=15)
 hosts = api.get_all_hosts()
@@ -48,7 +48,7 @@ if __name__ == '__main__':
             "slaveFailCountThreshold" : 12345
         })
 
-    enable = requests.post("http://sam-1.vpc.cloudera.com:7180/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=args)
+    enable = requests.post("http://bluedata-gsk-1.vpc.cloudera.com:7180/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=args)
 
 # def enable_sentry_ha(self, new_sentry_host_id, new_sentry_role_name, zk_service_name):
 #     args = dict(
