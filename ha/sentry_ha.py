@@ -36,16 +36,19 @@ if __name__ == '__main__':
     print new_sentry_host_id
     zk_service_name = get_service_name('ZOOKEEPER', api, 'cluster_1')
     print zk_service_name
-    args = dict {
-        newSentryHostId = '0cd834a2-f5ad-441c-9cc6-6ad3e26de9d4',
-        newSentryRoleName =  'sentry-SENTRY_SERVER-second',
-        zkServiceName = 'zookeeper',
-        rrcArgs = {
-            "slaveBatchSize" : 10,
-            "sleepSeconds" : 10,
-            "slaveFailCountThreshold" : 10
-        }}
-    enable = requests.post("http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=args)
+    arguments={
+        "newSentryHostId": "0cd834a2-f5ad-441c-9cc6-6ad3e26de9d4",
+        "newSentryRoleName": "sentry-SENTRY_SERVER-5e590a9a495e2b4b7cca67babca370d0",
+        "zkServiceName": "zookeeper",
+        "rrcArgs": {
+            "slaveBatchSize": 10,
+            "sleepSeconds": 10,
+            "slaveFailCountThreshold": 10
+        }
+    }
+
+
+    enable = requests.post("http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=arguments)
     print enable
 
 # def enable_sentry_ha(self, new_sentry_host_id, new_sentry_role_name, zk_service_name):
