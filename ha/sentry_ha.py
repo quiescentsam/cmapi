@@ -39,7 +39,7 @@ if __name__ == '__main__':
     arguments={
         "newSentryHostId": "0cd834a2-f5ad-441c-9cc6-6ad3e26de9d4",
         "newSentryRoleName": "sentry-SENTRY_SERVER-5e590a9a495e2b4b7cca67babca370d0",
-        "zkServiceName": "zookeeper",
+        "zkServiceName": zk_service_name,
         "rrcArgs": {
             "slaveBatchSize": 10,
             "sleepSeconds": 10,
@@ -50,44 +50,6 @@ if __name__ == '__main__':
         'Content-Type': 'application/json',
     }
 
-    #enable = requests.post("http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=arguments, headers=headers)
     enable = requests.post("http://bluedata-gsk-1.vpc.cloudera.com:7180/api/v19/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=json.dumps(arguments), headers=headers )
     print enable
-
-#
-#
-# authorization: Basic YWRtaW46YWRtaW4=
-# content-type: application/json
-# cookie: __utmc=6357089; __utmz=6357089.1549380934.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=6357089.656093885.1513718057.1549500031.1549551794.7; __utmb=6357089.108.8.1549554498173
-
-# def enable_sentry_ha(self, new_sentry_host_id, new_sentry_role_name, zk_service_name):
-#     args = dict(
-#             newSentryHostId = new_sentry_host_id,
-#             newSentryRoleName =  new_sentry_role_name,
-#             zkServiceName = zk_service_name,
-#             rrcArgs = {
-#                 "slaveBatchSize" : 12345,
-#                 "sleepSeconds" : 12345,
-#                 "slaveFailCountThreshold" : 12345
-#             }
-#     )
-#     return self._cmd('enableSentryHa', data=args)
-
-# def enable_rm_ha(self, new_rm_host_id, zk_service_name=None):
-#     """
-#     Enable high availability for a YARN ResourceManager.
-#     @param new_rm_host_id: id of the host where the second ResourceManager
-#                            will be added.
-#     @param zk_service_name: Name of the ZooKeeper service to use for auto-failover.
-#            If YARN service depends on a ZooKeeper service then that ZooKeeper
-#            service will be used for auto-failover and in that case this parameter
-#            can be omitted.
-#     @return: Reference to the submitted command.
-#     @since: API v6
-#     """
-#     args = dict(
-#         newRmHostId = new_rm_host_id,
-#         zkServiceName = zk_service_name
-#     )
-#     return self._cmd('enableRmHa', data=args)
 
