@@ -1,8 +1,5 @@
 from cm_api.api_client import ApiResource
-import requests,json,os,urllib
-from cm_api.endpoints.services import ApiServiceSetupInfo
-from cm_api.endpoints import roles, role_config_groups
-import cm_client
+import requests,json,urllib
 
 CM_IP="sam-1.vpc.cloudera.com"
 CDH_CLUST_NAME="cluster 1"
@@ -50,10 +47,10 @@ if __name__ == '__main__':
     }
 
     enable = requests.post(url , auth=('admin', 'admin'), data=json.dumps(arguments), headers=headers )
-    result= enable.content
-    response= json.loads(result)
+    result = enable.content
+    response = json.loads(result)
     print enable.status_code
     print response["resultMessage"]
-    
+
 
 
