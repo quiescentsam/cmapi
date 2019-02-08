@@ -8,17 +8,7 @@ CM_IP="sam-1.vpc.cloudera.com"
 CDH_CLUST_NAME="cluster 1"
 CM_PROTO='http'
 CM_PORT='7180'
-new_sentry_host = "sam-3.vpc.cloudera.com"
-cluster_name = 'cluster_1'
-
-
-def get_sentry_role_name():
-    cluster = api.get_cluster(cluster_name)
-    services =  cluster.get_all_services()
-    for service in services:
-        if service.type == "SENTRY":
-            roles = service.get_all_roles()
-            return roles[1].name
+NEW_SENTRY_HOST = "sam-3.vpc.cloudera.com"
 
 
 def get_host_id(hostname):
@@ -42,14 +32,9 @@ def get_service_name(service_type, api, cluster_name):
 if __name__ == '__main__':
     CDH_CLUST_NAME = urllib.quote(CDH_CLUST_NAME)
     url = CM_PROTO + '://' + CM_IP + ':' + CM_PORT + '/api/v19/clusters/' + CDH_CLUST_NAME + '/services/sentry/commands/enableSentryHa'
-    print url
     api = ApiResource(CM_IP, CM_PORT, 'admin', 'admin', version=15)
-    new_sentry_host_id = get_host_id(new_sentry_host)
-    print new_sentry_host_id
+    new_sentry_host_id = get_host_id(NEW_SENTRY_HOST)
     zk_service_name = get_service_name('ZOOKEEPER', api, 'cluster_1')
-    print zk_service_name
-    sentry_role_name = get_sentry_role_name()
-    print sentry_role_name
     arguments={
         "newSentryHostId": new_sentry_host_id,
         "newSentryRoleName": "secondsentryserver",
