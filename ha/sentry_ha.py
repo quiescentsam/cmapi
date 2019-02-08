@@ -8,7 +8,7 @@ CM_IP="sam-1.vpc.cloudera.com"
 CDH_CLUST_NAME="cluster 1"
 CM_PROTO='http'
 CM_PORT='7180'
-new_sentry_host = "bluedata-gsk-5.vpc.cloudera.com"
+new_sentry_host = "sam-2.vpc.cloudera.com"
 cluster_name = 'cluster_1'
 
 
@@ -52,7 +52,7 @@ if __name__ == '__main__':
     print sentry_role_name
     arguments={
         "newSentryHostId": new_sentry_host_id,
-        "newSentryRoleName": "sentry-SENTRY_SERVER-ebbe4edca874a0e083507577a9d20715",
+        "newSentryRoleName": sentry_role_name,
         "zkServiceName": zk_service_name,
         "rrcArgs": {
             "slaveBatchSize": 10,
@@ -65,8 +65,7 @@ if __name__ == '__main__':
     }
 
     enable = requests.post(url , auth=('admin', 'admin'), data=json.dumps(arguments), headers=headers )
-    print enable.content
-    print enable
+    print enable.content.resultMessage
 
 
 
