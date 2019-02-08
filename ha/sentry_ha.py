@@ -12,9 +12,6 @@ new_sentry_host = "bluedata-gsk-5.vpc.cloudera.com"
 cluster_name = 'cluster_1'
 
 
-def make_url():
-    url =
-
 def get_sentry_role_name():
     cluster = api.get_cluster(cluster_name)
     services =  cluster.get_all_services()
@@ -43,6 +40,7 @@ def get_service_name(service_type, api, cluster_name):
             return service_name.name
 
 if __name__ == '__main__':
+
     url = CM_PROTO + '://' + CM_IP + ':' + CM_PORT + '/api/v19/clusters/' + CDH_CLUST_NAME + '/services/sentry/commands/enableSentryHa'
     print url
     api = ApiResource(CM_IP, CM_PORT, 'admin', 'admin', version=15)
@@ -67,7 +65,7 @@ if __name__ == '__main__':
     }
 
     #enable = requests.post("http://CM_IP:7180/api/v19/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=json.dumps(arguments), headers=headers )
-    print enable
+    #print enable
 
 
 
