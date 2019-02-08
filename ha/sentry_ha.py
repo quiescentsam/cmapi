@@ -52,7 +52,7 @@ if __name__ == '__main__':
     print sentry_role_name
     arguments={
         "newSentryHostId": new_sentry_host_id,
-        "newSentryRoleName": sentry_role_name,
+        "newSentryRoleName": "rolesentry",
         "zkServiceName": zk_service_name,
         "rrcArgs": {
             "slaveBatchSize": 10,
