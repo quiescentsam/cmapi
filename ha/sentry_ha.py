@@ -4,9 +4,10 @@ from cm_api.endpoints.services import ApiServiceSetupInfo
 from cm_api.endpoints import roles, role_config_groups
 import cm_client
 
-
-cm_host = "sam-1.vpc.cloudera.com"
-cm_port = 7180
+CM_IP="sam-1.vpc.cloudera.com"
+CDH_CLUST_NAME="cluster 1"
+CM_PROTO='http'
+CM_PORT=7180
 cm_username = 'admin'
 cm_password = 'admin'
 new_sentry_host = "bluedata-gsk-5.vpc.cloudera.com"
@@ -15,7 +16,7 @@ cluster_name = 'cluster_1'
 api = ApiResource(cm_host, cm_port, cm_username, cm_password, version=15)
 
 def make_url():
-    url = 
+    url =
 
 def get_sentry_role_name():
     cluster = api.get_cluster(cluster_name)
