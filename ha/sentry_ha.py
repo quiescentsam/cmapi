@@ -5,27 +5,7 @@ from cm_api.endpoints import roles, role_config_groups
 import cm_client
 
 
-def __init__(self):
-    self.cm_api_url = "{}://{}:{}/api/{}"
-    self.cm_protocol = "http"
-    #self.cm_host = os.environ['CM_IP']
-    self.cm_host = os.environ['CM_IP']
-    self.cluster_name = os.environ['CDH_CLUST_NAME']
-    self.hidden_configs_file = os.environ['HIDDEN_CONFIGS_FILE']
-    self.jinja_file_path = jinja_file_path
-    self.temp_json_file_path = None
-    self.cm_port = "7180"
-    self.cm_api_version = "v19"
-    cm_client.configuration.username = "admin"
-    cm_client.configuration.password = "admin"
-    self.cm_api_url = self.cm_api_url.format(self.cm_protocol, self.cm_host, self.cm_port, self.cm_api_version)
-    self.api_client = cm_client.ApiClient(self.cm_api_url)
-    self.services_api_client = cm_client.ServicesResourceApi(self.api_client)
-    self.cluster_api_client = cm_client.ClustersResourceApi(self.api_client)
-    self.role_config_groups_client = cm_client.RoleConfigGroupsResourceApi(self.api_client)
-
-
-cm_host = "bluedata-gsk-1.vpc.cloudera.com"
+cm_host = "sam-1.vpc.cloudera.com"
 cm_port = 7180
 cm_username = 'admin'
 cm_password = 'admin'
