@@ -64,8 +64,8 @@ if __name__ == '__main__':
         'Content-Type': 'application/json',
     }
 
-    #enable = requests.post("http://CM_IP:7180/api/v19/clusters/cluster_1/services/sentry/commands/enableSentryHa", auth=('admin', 'admin'), data=json.dumps(arguments), headers=headers )
-    #print enable
+    enable = requests.post(url , auth=('admin', 'admin'), data=json.dumps(arguments), headers=headers )
+    print enable
 
 
 
