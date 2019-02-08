@@ -52,7 +52,7 @@ if __name__ == '__main__':
     print sentry_role_name
     arguments={
         "newSentryHostId": new_sentry_host_id,
-        "newSentryRoleName": "rolesentry",
+        "newSentryRoleName": "secondsentryserver",
         "zkServiceName": zk_service_name,
         "rrcArgs": {
             "slaveBatchSize": 10,
@@ -67,8 +67,8 @@ if __name__ == '__main__':
     enable = requests.post(url , auth=('admin', 'admin'), data=json.dumps(arguments), headers=headers )
     result= enable.content
     response= json.loads(result)
+    print response["resultMessage"]
     print enable.status_code
-    print
 
 
 
