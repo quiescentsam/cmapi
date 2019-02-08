@@ -8,7 +8,7 @@ CM_IP="sam-1.vpc.cloudera.com"
 CDH_CLUST_NAME="cluster 1"
 CM_PROTO='http'
 CM_PORT='7180'
-new_sentry_host = "sam-2.vpc.cloudera.com"
+new_sentry_host = "sam-3.vpc.cloudera.com"
 cluster_name = 'cluster_1'
 
 
@@ -66,7 +66,7 @@ if __name__ == '__main__':
 
     enable = requests.post(url , auth=('admin', 'admin'), data=json.dumps(arguments), headers=headers )
     result= enable.content
-    print json.loads(result).resultMessage
+    print json.loads(result)
     print enable.status_code
 
 
