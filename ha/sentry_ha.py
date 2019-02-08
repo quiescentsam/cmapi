@@ -52,17 +52,8 @@ if __name__ == '__main__':
     enable = requests.post(url , auth=('admin', 'admin'), data=json.dumps(arguments), headers=headers )
     result= enable.content
     response= json.loads(result)
-    print response["resultMessage"]
     print enable.status_code
-
-
-
-# /Users/ssiddiqui/.conda/envs/cmapi/bin/python /Users/ssiddiqui/Desktop/SAMEER2.0/WORK/CODE/cmapi/ha/sentry_ha.py
-# http://sam-1.vpc.cloudera.com:7180/api/v19/clusters/cluster%201/services/sentry/commands/enableSentryHa
-# db77c41f-f10e-4941-bc14-7562fc58056b
-# zookeeper
-# sentry-SENTRY_SERVER-ebbe4edca874a0e083507577a9d20714
-# {u'active': True, u'serviceRef': {u'clusterName': u'cluster_1', u'serviceName': u'sentry'}, u'id': 424, u'startTime': u'2019-02-08T17:45:14.125Z', u'name': u'EnableSentryHA'}
-# 200
+    print response["resultMessage"]
+    
 
 
