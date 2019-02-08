@@ -66,7 +66,7 @@ if __name__ == '__main__':
 
     enable = requests.post(url , auth=('admin', 'admin'), data=json.dumps(arguments), headers=headers )
     result= enable.content
-    print result.
+    print json.loads(result).resultMessage
     print enable.status_code
 
 
