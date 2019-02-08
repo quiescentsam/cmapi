@@ -1,5 +1,5 @@
 from cm_api.api_client import ApiResource
-import requests,json,os
+import requests,json,os,urllib
 from cm_api.endpoints.services import ApiServiceSetupInfo
 from cm_api.endpoints import roles, role_config_groups
 import cm_client
@@ -40,7 +40,7 @@ def get_service_name(service_type, api, cluster_name):
             return service_name.name
 
 if __name__ == '__main__':
-
+    CDH_CLUST_NAME = urllib.quote(CDH_CLUST_NAME)
     url = CM_PROTO + '://' + CM_IP + ':' + CM_PORT + '/api/v19/clusters/' + CDH_CLUST_NAME + '/services/sentry/commands/enableSentryHa'
     print url
     api = ApiResource(CM_IP, CM_PORT, 'admin', 'admin', version=15)
