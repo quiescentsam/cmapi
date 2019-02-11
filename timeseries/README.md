@@ -48,7 +48,7 @@ entityName,metricName,timestamp,value
 
 
 
-PYTHON SCRIPT
+#PYTHON SCRIPT
 
 
 https://github.com/cloudera/cm_api/blob/master/python/examples/timeseries.py
