@@ -41,7 +41,7 @@ def print_config_changes(cluster):
         serviceNameConfigList = service.get_config(view='full')[0].items()
         # We then sort this by the name itself
         for name, config in sorted(serviceNameConfigList, key=lambda (nm, cf): nm):
-            if (config.value):
+            if "java" in name:
                 print "  %-70s: %s" % (name, config.value)
 
         # Print role-level configuration changes
@@ -58,7 +58,7 @@ def print_config_changes(cluster):
             # Sort the role config properties as well in our output.
             roleNameConfigList = role.get_config(view='full').items()
             for name, config in sorted(roleNameConfigList, key=lambda (nm, cf): nm):
-                if ("java" in name):
+                if "java" in name:
                     print "  %-70s: %s" % (name, config.value)
 
 def main():
