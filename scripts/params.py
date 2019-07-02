@@ -58,7 +58,7 @@ def print_config_changes(cluster):
             # Sort the role config properties as well in our output.
             roleNameConfigList = role.get_config(view='full').items()
             for name, config in sorted(roleNameConfigList, key=lambda (nm, cf): nm):
-                if (name):
+                if ("java" in name):
                     print "  %-70s: %s" % (name, config.value)
 
 def main():
