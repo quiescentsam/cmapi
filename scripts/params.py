@@ -10,7 +10,7 @@ def get_cm_api():
     if (not os.environ.get('PYTHONHTTPSVERIFY', '') and
             getattr(ssl, '_create_unverified_context', None)):
         ssl._create_default_https_context = ssl._create_unverified_context
-    return ApiResource(server_host=host, server_port=7180, username=username, password=password, use_tls=False, version=19)
+    return ApiResource(server_host=host, server_port=port, username=username, password=password, use_tls=False, version=19)
 
 def find_cluster(api, cluster_name):
     all_clusters = api.get_all_clusters()
@@ -41,7 +41,7 @@ def print_config_changes(cluster):
         serviceNameConfigList = service.get_config(view='full')[0].items()
         # We then sort this by the name itself
         for name, config in sorted(serviceNameConfigList, key=lambda (nm, cf): nm):
-            if "safety" in name:
+            if "safety" in name and config.value is not None:
                 print "  %-70s: %s" % (name, config.value)
 
         # Print role-level configuration changes
@@ -58,7 +58,7 @@ def print_config_changes(cluster):
             # Sort the role config properties as well in our output.
             roleNameConfigList = role.get_config(view='full').items()
             for name, config in sorted(roleNameConfigList, key=lambda (nm, cf): nm):
-                if "safety" in name:
+                if "safety" in name and config.value is not None:
                     print "  %-70s: %s" % (name, config.value)
 
 def main():
