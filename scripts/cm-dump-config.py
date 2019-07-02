@@ -3,14 +3,14 @@ import os,ssl
 from cm_api.api_client import ApiResource
 
 def get_cm_api():
-    host = "18.205.96.96"
-    port = 7183
+    host = "nightly61x-1.vpc.cloudera.com"
+    port = 7180
     username = "admin"
     password = "admin"
     if (not os.environ.get('PYTHONHTTPSVERIFY', '') and
         getattr(ssl, '_create_unverified_context', None)):
         ssl._create_default_https_context = ssl._create_unverified_context
-    return ApiResource(server_host=host, server_port=7183, username=username, password=password, use_tls=True, version=13)
+    return ApiResource(server_host=host, server_port=7180, username=username, password=password, use_tls=True, version=31)
 
 def find_cluster(api, cluster_name):
     all_clusters = api.get_all_clusters()
