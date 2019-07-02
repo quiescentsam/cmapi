@@ -10,7 +10,7 @@ def get_cm_api():
     if (not os.environ.get('PYTHONHTTPSVERIFY', '') and
         getattr(ssl, '_create_unverified_context', None)):
         ssl._create_default_https_context = ssl._create_unverified_context
-    return ApiResource(server_host=host, server_port=7180, username=username, password=password, use_tls=True, version=31)
+    return ApiResource(server_host=host, server_port=7180, username=username, password=password, use_tls=False, version=31)
 
 def find_cluster(api, cluster_name):
     all_clusters = api.get_all_clusters()
